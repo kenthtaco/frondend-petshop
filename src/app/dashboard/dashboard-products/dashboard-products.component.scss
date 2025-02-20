@@ -1,0 +1,395 @@
+.dashboard {
+  min-height: 250vh;
+  min-width: 190vh;
+  padding: 10rem;
+  background-color: #2a2d41;
+  background-image: linear-gradient(-50deg, #161836, #444870);
+  margin: 0;
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap; // Para pantallas pequeñas
+
+    .form-container {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60%;
+      max-width: 800px;
+      padding: 2.5rem;
+      background: rgba(42, 45, 65, 0.85);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+
+      .form-header {
+        text-align: center;
+        margin-bottom: 2rem;
+
+        .form-logo {
+          max-width: 80px;
+          margin-bottom: 1rem;
+          border-radius: 50%;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-title {
+          font-size: 1.8rem;
+          font-weight: bold;
+          color: #00ff88;
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+      }
+
+      .form-control {
+        width: 200%;
+        background-color: rgba(50, 53, 92, 0.9);
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 10px;
+        padding: 0.8rem;
+        margin-bottom: 1.5rem;
+        transition: box-shadow 0.3s ease;
+
+        &:focus {
+          border-color: #00ff88;
+          box-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
+        }
+      }
+
+      .btn {
+        width: 100%;
+        padding: 0.8rem;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: white;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+
+      .btn-success {
+        background: linear-gradient(45deg, #00ff88, #00cc6e);
+        border: none;
+
+        &:hover {
+          background: linear-gradient(45deg, #00cc6e, #00a954);
+          transform: translateY(-2px);
+        }
+      }
+
+      .btn-secondary {
+        background: linear-gradient(45deg, #444870, #32355c);
+        border: none;
+
+        &:hover {
+          background: linear-gradient(45deg, #32355c, #1e203b);
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+
+  .custom-table {
+    border: 2px solid #343957; /* Borde principal elegante */
+    border-radius: 8px; /* Bordes redondeados */
+    overflow: hidden; /* Evita que los bordes redondeados se vean mal */
+  }
+  
+  .custom-table th,
+  .custom-table td {
+    border: 1px solid #5a6270; /* Color del borde de celdas */
+    padding: 12px; /* Espaciado para mejorar la apariencia */
+  }
+  
+  .custom-table thead {
+    background-color: #343957; /* Fondo oscuro para la cabecera */
+    color: #00ffc8; /* Color del texto */
+  }
+  
+  .custom-table tbody tr:hover {
+    background-color: rgba(0, 255, 200, 0.1); /* Efecto hover elegante */
+  }
+  
+
+  .table-container {
+    position: relative;
+    margin: 5rem auto;
+    margin-top: 165vh; /* Fijo en la posición especificada */
+    margin-left: -50px;
+    width: 250%;
+    max-width: 1200px;
+    padding: 2rem;
+    background: rgba(42, 45, 65, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    overflow-y: visible; /* Permite que el contenido crezca hacia abajo */
+  
+  
+  .table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+      thead {
+        background: linear-gradient(45deg, #444870, #32355c);
+        color: #ff0000;
+
+        th {
+          padding: 1rem;
+          font-weight: bold;
+          text-align: left;
+          border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+      }
+
+      tbody {
+        background-color: #343957;
+        tr {
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: rgba(50, 53, 92, 0.7);
+          }
+
+          td {
+            background-color: #343957;
+            padding: 0.8rem;
+            color: #00ff2a;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          }
+
+          
+
+          .btn-primary {
+            background: linear-gradient(45deg, #4b5dff, #3a47cc);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+
+            &:hover {
+              background: linear-gradient(45deg, #3a47cc, #2a35a0);
+              transform: translateY(-2px);
+            }
+          }
+
+          .btn-danger {
+            background: linear-gradient(45deg, #ff4b4b, #cc3a3a);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+
+            &:hover {
+              background: linear-gradient(45deg, #cc3a3a, #a32b2b);
+              transform: translateY(-2px);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .modal {
+    display: flex;
+    align-items: center; /* Centrado vertical */
+    justify-content: center; /* Centrado horizontal */
+    position: fixed; /* Posición fija para ocupar toda la ventana */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Ocupa todo el ancho de la ventana */
+    height: 100vh; /* Ocupa todo el alto de la ventana */
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con transparencia */
+    backdrop-filter: blur(5px); /* Efecto de desenfoque */
+    opacity: 0; /* Inicialmente oculto */
+    pointer-events: none; /* Desactiva la interacción */
+    transition: opacity 0.3s ease-in-out; /* Transición suave al mostrar/ocultar */
+    
+    &.show {
+      opacity: 1; /* Mostrar modal */
+      pointer-events: auto; /* Activar interacción */
+      animation: fadeIn 0.3s ease-out forwards; /* Animación de entrada */
+    }
+  
+    &.hide {
+      animation: fadeOut 0.3s ease-in forwards; /* Animación de salida */
+    }
+  
+    .modal-dialog {
+      max-width: 500px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+  
+    .modal-content {
+      background: #ffffff; /* Fondo blanco para el contenido */
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Sombra para dar efecto flotante */
+  
+      .modal-header {
+        background: linear-gradient(135deg, #4869ff, #399fff); /* Degradado en el encabezado */
+        color: #ffffff; /* Texto blanco */
+        border-bottom: none;
+        padding: 1.5rem;
+  
+        .modal-title {
+          font-size: 1.5rem;
+          font-weight: bold;
+          letter-spacing: 0.5px; /* Espaciado entre letras */
+        }
+  
+        .btn-close {
+          background: #fff; /* Botón de cerrar con fondo blanco */
+          border: none;
+          border-radius: 50%;
+          width: 1.5rem;
+          height: 1.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s ease;
+  
+          &:hover {
+            background: #ff6f61; /* Color de hover para el botón */
+          }
+        }
+      }
+  
+      .modal-body {
+        padding: 1.5rem;
+        text-align: center;
+        font-size: 1.2rem;
+        color: #333333; /* Texto oscuro */
+  
+        p {
+          margin: 0;
+          line-height: 1.6;
+        }
+      }
+  
+      .modal-footer {
+        display: flex;
+        justify-content: center;
+        padding: 1rem;
+        background: #f9f9f9; /* Fondo claro */
+        border-top: none;
+  
+        button {
+          background: #399fff; /* Fondo del botón */
+          color: #ffffff;
+          border: none;
+          padding: 0.7rem 1.5rem;
+          border-radius: 8px;
+          font-size: 1rem;
+          font-weight: bold;
+          cursor: pointer;
+          transition: all 0.3s ease;
+  
+          &:hover {
+            background: #4869ff; /* Cambio de color al hover */
+          }
+        }
+      }
+    }
+  
+    /* Animación de entrada (fade-in) */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0; /* Completamente transparente */
+      }
+      100% {
+        opacity: 1; /* Totalmente visible */
+      }
+    }
+  
+    /* Animación de salida (fade-out) */
+    @keyframes fadeOut {
+      0% {
+        opacity: 1; /* Totalmente visible */
+      }
+      100% {
+        opacity: 0; /* Completamente transparente */
+      }
+    }
+  }
+
+
+
+
+
+/* Header del modal */
+.modal-header {
+  background-color: #dc3545;
+  border-bottom: 1px solid #f8d7da;
+  padding: 1.25rem;
+}
+
+.modal-header .modal-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Cuerpo del modal */
+.modal-body {
+  padding: 1.5rem;
+  font-size: 1.1rem;
+  color: #343a40;
+  text-align: center;
+}
+
+/* Footer del modal */
+.modal-footer {
+  padding: 1.25rem;
+  justify-content: center;
+}
+
+/* Botones */
+.modal-footer .btn {
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+}
+
+.modal-footer .btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.modal-footer .btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+.modal-footer .btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.modal-footer .btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Íconos en los botones */
+.modal-footer .btn i {
+  margin-right: 8px;
+}
+
+  
+  
+}

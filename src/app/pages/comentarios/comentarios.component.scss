@@ -1,0 +1,125 @@
+.comentarios-container {
+    max-width: 800px;
+    margin: 50px auto;  // Añadido margen superior para separación con el header
+    
+    padding: 20px;
+    border-radius: 8px;
+     // Agregado para mejorar el diseño visual
+    
+    h3 {
+      font-size: 1.5rem;
+      color: #4c5ef8;
+      text-align: center;
+      margin-bottom: 30px;
+      margin-top: 100px;
+    }
+  }
+  
+  .comentario-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    
+    h5 {
+      font-size: 1.2rem;
+      color: #4c5ef8;
+      margin-bottom: 10px;
+      font-weight: bolder;
+      
+    }
+  
+    .form-group {
+      margin-bottom: 20px;  // Aumenté el espacio entre los campos
+    
+      label {
+        font-size: 1rem;
+        color: #4c5ef8;
+      }
+  
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px;  // Aumenté el padding para mejorar la interacción
+        font-size: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        outline: none;
+        margin-top: 8px;  // Añadí un margen superior para separar la etiqueta del campo
+    
+        &:focus {
+          border-color: #007bff;
+        }
+      }
+  
+      textarea {
+        resize: vertical;
+      }
+    }
+  
+    button {
+      padding: 12px 24px;  // Aumenté el tamaño del botón
+      font-size: 1rem;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;  // Agregada transición suave para el hover
+  
+      &:disabled {
+        background-color: #ccc;
+      }
+  
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+  
+  .comentarios-list {
+    margin-top: 30px;
+    
+    h4 {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 15px;  // Espacio entre el título y los comentarios
+    }
+  }
+  
+  .comentario-item {
+    margin-bottom: 20px;  // Separación más grande entre comentarios
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .comentario-card {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  
+    .comentario-header {
+      font-weight: bold;
+      color: #333;
+    }
+  
+    .comentario-body {
+      margin-top: 10px;
+      color: #555;
+    }
+  }
+  
+  // Animación fade-in
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

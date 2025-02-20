@@ -1,0 +1,50 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top" *ngIf="isVisible">
+  <div class="container">
+    <a class="navbar-brand ms-3" routerLink="/">Petshop</a>
+    <img
+      src="https://cielodemascotas.com/wp-content/uploads/2022/03/cropped-logo-cielo-de-mascotas-01-1.png"
+      alt="logo"
+      class="logo-img"
+      style="height: 40px;" 
+    />
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" (click)="scrollToCategories()">Categorías</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/products">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/comentarios">Comentarios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/noticias">Noticias e información</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contactenos">Contáctanos</a>
+        </li>
+        
+        <!-- Sección de login y registro con iconos -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login">
+            <i class="fas fa-sign-in-alt"></i> <!-- Icono de Iniciar sesión -->
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/register">
+            <i class="fas fa-user-plus"></i> <!-- Icono de Registrarse -->
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Pantalla de carga -->
+<app-loading-spinner *ngIf="loading"></app-loading-spinner>

@@ -1,0 +1,1380 @@
+
+
+ 
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg  fixed-top shadow">
+  <div class="container">
+    <!-- Logo -->
+    <a class="navbar-brand d-flex align-items-center" routerLink="/">
+      <img
+      src="https://cielodemascotas.com/wp-content/uploads/2022/03/cropped-logo-cielo-de-mascotas-01-1.png"
+      alt="logo"
+      class="logo-img me-2"
+    
+    />
+    
+      <span class="fw-bold" style="font-size: 20px;">PetShop</span>
+    </a>
+
+    <!-- Navbar toggler (Mobile view) -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <!-- Categorías -->
+        <a class="nav-link nav-link-item fw-semibold" routerLink="" (click)="scrollToCategories()">
+          <i class="fas fa-th-large me-1"></i> Categorías
+        </a>
+    
+        <!-- Productos -->
+        <a class="nav-link nav-link-item fw-semibold" routerLink="/products">
+          <i class="fas fa-box-open me-1"></i> Productos
+        </a>
+    
+        <!-- Noticias -->
+        <a class="nav-link nav-link-item fw-semibold" routerLink="/noticias">
+          <i class="fas fa-newspaper me-1"></i> Noticias
+        </a>
+
+        
+    
+        <!-- Contacto -->
+        <a class="nav-link nav-link-item fw-semibold" routerLink="/contactenos">
+          <i class="fas fa-envelope me-1"></i> Contáctanos
+        </a>
+    
+        <!-- Login -->
+        <a class="nav-link nav-link-item fw-semibold" routerLink="/login">
+          <i class="fas fa-sign-in-alt me-1"></i> Iniciar sesión
+        </a>
+    
+        <!-- Registro -->
+        <a class="nav-link nav-link-item fw-semibold" routerLink="/register">
+          <i class="fas fa-user-plus me-1"></i> Registrarse
+        </a>
+
+         <!-- Carrito -->
+<a class="cart-icon" (click)="openLoginModal()">
+  <i class="fas fa-shopping-cart me-1"></i>
+</a>
+
+      </ul>
+      
+    </div>
+    
+  </div>
+</nav>
+
+
+
+<style>
+/* src/app/shared/header/header.component.scss */
+
+.navbar {
+  background-color: #4570ff; /* Fondo del navbar */
+  border-radius: 0;
+  margin-bottom: 15px;
+  min-height: 60px;
+  border-bottom: 3px solid #00eeff; /* Línea decorativa inferior */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  padding: 20px 20px; /* Espaciado interno */
+  transition: background-color 0.3s ease, border-bottom 0.3s ease;
+
+  &:hover {
+    border-bottom: 3px solid #00ff4c; /* Línea inferior cambia de color */
+  }
+
+  /* Icono de carrito de compras */
+  .cart-icon {
+    text-decoration: none; /* Quitar subrayado o decoraciones */
+    color: white; /* Heredar el color del texto actual */
+    padding: 0; /* Eliminar cualquier padding */
+    border: none; /* Quitar cualquier borde */
+    background: none; /* Sin fondo */
+    cursor: pointer; /* Cambiar el cursor a pointer */
+    transition: color 0.3s, background-color 0.3s;
+
+    &:hover {
+      color: #00eeff;
+    }
+
+    &:focus {
+      outline: none; /* Elimina el contorno del foco */
+    }
+  }
+
+  /* Marca del navbar (logo y texto) */
+  .navbar-brand {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem; /* Tamaño de texto de la marca */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaciado entre logo y texto */
+    text-decoration: none;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #00e1ff; /* Color al pasar el mouse */
+    }
+
+    .logo-img {
+      height: 40px;
+      width: auto;
+      filter: brightness(0) invert(1); /* Asegura buena visibilidad en fondo oscuro */
+    }
+  }
+
+  /* Botón de hamburguesa */
+  .navbar-toggler {
+    border: none;
+    outline: none;
+    background-color: #fff; /* Fondo claro para contraste */
+    color: #4570ff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+
+    &:hover {
+      background-color: #00eeff;
+      color: #fff;
+    }
+  }
+
+  /* Navegación */
+  .navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Espaciado uniforme entre enlaces */
+
+    .nav-link {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #fff;
+      padding: 20px 12px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: color 0.3s, background-color 0.3s;
+
+      &:hover {
+        color: #00eeff;
+        background-color: rgba(255, 255, 255, 0.1); /* Fondo sutil al pasar el mouse */
+      }
+
+      i {
+        margin-right: 5px; /* Espaciado entre ícono y texto */
+      }
+    }
+  }
+
+  .logo-img {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+    filter: brightness(0) invert(1);
+  }
+
+  .navbar-toggler {
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 5px 10px;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  /* Barra de búsqueda (si existe) */
+  .search-bar {
+    background-color: #4570ff;
+    padding: 15px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-item {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Responsivo para pantallas pequeñas (móviles) */
+  @media (max-width: 768px) {
+    .navbar {
+      padding: 5px 10px; /* Menos espacio vertical */
+      min-height: 50px; /* Reducir la altura del navbar */
+    }
+
+    .navbar-nav {
+      gap: 10px; /* Menos espacio entre los enlaces */
+      flex-direction: column; /* Cambiar a columna en móviles */
+      align-items: flex-start; /* Alinear los enlaces al inicio */
+    }
+
+    .navbar-toggler {
+      display: block;
+      margin-top: 5px; /* Reducir el espacio encima del botón */
+    }
+
+    .logo-img {
+      width: 35px; /* Reducir aún más el tamaño del logo */
+    }
+
+    .navbar-nav {
+      .nav-link {
+        font-size: 0.85rem; /* Reducir el tamaño de la fuente */
+        padding: 8px 12px;
+        text-align: left; /* Menos espacio dentro de los enlaces */
+      }
+    }
+  }
+
+  /* Responsivo para pantallas de laptops */
+  @media (max-width: 1024px) {
+    .navbar {
+      padding: 10px 15px; /* Ajustar el padding */
+      min-height: 60px; /* Mantener altura adecuada */
+    }
+
+    .navbar-nav {
+      gap: 15px; /* Reducir el espacio entre los enlaces */
+    }
+
+    .navbar-toggler {
+      display: block;
+      margin-top: 5px;
+    }
+
+    .logo-img {
+      width: 40px; /* Tamaño adecuado para la pantalla de laptop */
+    }
+
+    .navbar-nav {
+      .nav-link {
+        font-size: 0.95rem; /* Reducir el tamaño de la fuente */
+        padding: 10px 15px;
+      }
+    }
+  }
+}
+
+
+</style>
+
+<div style="background-image: url(https://i.pinimg.com/originals/25/2c/7c/252c7c2432de5681751346f8af5d375c.png); background-size: cover; padding-top: 50px; padding-bottom: 50px; margin-top: -100px;">
+
+  <!-- Jumbotron principal con animación -->
+  <div class="jumbotron d-flex align-items-center justify-content-between" style="margin: 35px 0 0 0; width: 100%; padding: 6rem; border-radius: 0; background-color: #f8f9fa;">
+    <!-- Contenido a la izquierda -->
+    <div class="text-content">
+      <h1 class="display-4 animated fadeInDown">Bienvenidos a Petshop</h1>
+      <p class="lead animated fadeInUp">¡Tu tienda todo-en-uno para las necesidades de tus mascotas!</p>
+      <hr class="my-4">
+      <p class="animated fadeInUp delay-1s">Explora nuestra amplia gama de productos y encuentra los accesorios perfectos para tus amigos peludos.</p>
+      <a class="btn-image-efecto" href="/products" role="button">Ir a la tienda</a>
+    </div>
+    <!-- Imagen a la derecha -->
+    <div class="image-content">
+      <img src="https://cdni.iconscout.com/illustration/premium/thumb/nino-acariciando-mascota-perro-4737561-3937002.png" alt="Mascota feliz" style="width: 100%; height: auto; border-radius: 8px;" class="animated fadeInRight delay-1s">
+    </div>
+  </div>
+
+  <div #categoriesContainer class="categories-container">
+    <div class="container mt-5">
+      <div class="category-buttons d-flex flex-wrap justify-content-center gap-3">
+        <button class="btn btn-lg btn-category" [routerLink]="['/products']" fragment="scroll1">
+          <i class="fas fa-bone fa-4x"></i>
+          <br>Comida
+        </button>
+        
+        <button class="btn btn-lg btn-category" routerLink="/products" fragment="scroll2">
+          <i class="fas fa-paw fa-4x"></i>
+          <br>Accesorios
+        </button>
+        
+        <button class="btn btn-lg btn-category" routerLink="/products" fragment="scroll3">
+          <i class="fas fa-dog fa-4x"></i>
+          <br>Ropa
+        </button>
+        
+        <button class="btn btn-lg btn-category" routerLink="/products" fragment="scroll4">
+          <i class="fas fa-shower fa-4x"></i>
+          <br>Aseo
+        </button>
+        
+        <button class="btn btn-lg btn-category" routerLink="/products" fragment="scroll5">
+          <i class="fas fa-prescription-bottle-alt fa-4x"></i>
+          <br>Medicina
+        </button>
+        
+        <!-- Nuevo botón "Otros" -->
+        <button class="btn btn-lg btn-category" routerLink="/products" fragment="scroll6">
+          <i class="fas fa-plus fa-4x"></i>
+          <br>Otros
+        </button>
+        
+      </div>
+    </div>
+  </div>
+  
+
+<div class="container mt-5">
+  <div class="row justify-content-center"> <!-- Centrar las columnas dentro del contenedor -->
+    <!-- Columna para las dos primeras imágenes (una encima de la otra) -->
+    <div class="col-md-8 mb-4">
+      <div class="row">
+        <!-- Imagen 1 (Accesorios para mascotas) -->
+        <div class="col-12 mb-4">
+          <div class="image-container">
+            <img src="https://tm-shopify037-clothes.myshopify.com/cdn/shop/files/banner_1_4360bdf1-51d7-41bb-8a4e-98bcf1c2f206_895x372_crop_center.png?v=1626334124" 
+                 class="img-fluid" 
+                 alt="Accesorios para mascotas">
+            <div class="text-overlay">
+              <h5 class="overlay-title">Cepillo para perro</h5>
+              <p class="overlay-text">Precio: $3.99</p>
+              <a (click)="openLoginModal()" class="btn-efecto">Comprar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Imagen 2 (Comida para mascotas) -->
+        <div class="col-12 mb-4">
+          <div class="image-container">
+            <img src="https://tm-shopify037-clothes.myshopify.com/cdn/shop/files/banner_2_4b55bdb6-c32b-4811-aa29-6afd06cb9d49_895x372_crop_center.png?v=1626334165" 
+                 class="img-fluid" 
+                 alt="Comida para mascotas">
+            <div class="text-overlay">
+              <h5 class="overlay-title">Saco pequeño</h5>
+              <p class="overlay-text">Precio: $19.00</p>
+              <a (click)="openLoginModal()" class="btn-efecto">Comprar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Columna para la tercera imagen (más grande) -->
+    <div class="col-md-4 mb-4">
+      <div class="image-container">
+        <img src="https://tm-shopify037-clothes.myshopify.com/cdn/shop/files/banner_3_6fb83abe-83fc-41fa-b308-81976608744b_590x789_crop_center.png?v=1626334196" 
+             class="img-fluid" 
+             alt="Juguetes para mascotas">
+        <div class="text-image">
+          <h5 class="image-title">Utilidades para corte de pelo</h5>
+          <p class="image-text">Precio: $5.00</p>
+          <a (click)="openLoginModal()" class="btn-efecto-btn">Comprar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+ 
+  <div class="container mt-5">
+    <!-- Carrusel -->
+    <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+
+      <h2 class="text-center mb-4" style="font-weight: bolder; font-size: 30px; color: #415eff7a;">Accesorios para tus mascotas</h2>
+      <!-- Contenedor de productos -->
+      <div class="carousel-inner">
+        <!-- Grupo de productos 1 -->
+        <div class="carousel-item active">
+          <div class="row">
+            <!-- Producto 1 -->
+            <div class="col-md-3">
+              <div class="product-card text-center">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCIVCs42hQVNY0kZdWKN8isf5Jr02i2RWq3g&s" class="img-fluid rounded" alt="Producto 1">
+                <h5 class="mt-3">Correa Reflectante</h5>
+                <p>$12.99</p>
+                <button (click)="openLoginModal()" class="buy-button">Comprar</button>
+              </div>
+            </div>
+            <!-- Producto 2 -->
+            <div class="col-md-3">
+              <div class="product-card text-center">
+                <img src="https://http2.mlstatic.com/D_NQ_NP_958492-MLU74274164528_022024-O.webp" class="img-fluid rounded" alt="Comedero Antideslizante">
+                <h5 class="mt-3">Comedero Antideslizante</h5>
+                <p>$15.49</p>
+                <button (click)="openLoginModal()" class="buy-button">Comprar</button>
+              </div>
+            </div>
+            <!-- Producto 3 -->
+            <div class="col-md-3">
+              <div class="product-card text-center">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiVY3NNDKbuTnyvw4ZSoLdJHzZkvfmOzU0Fg&s" class="img-fluid rounded" alt="Juguete Mordedor">
+                <h5 class="mt-3">Juguete Mordedor</h5>
+                <p>$8.75</p>
+                <button (click)="openLoginModal()" class="buy-button">Comprar</button>
+              </div>
+            </div>
+            <!-- Producto 4 -->
+            <div class="col-md-3">
+              <div class="product-card text-center">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYx1GO4WKw3NZGbHwVqNRk97twaxGdeGQ8fA&s" class="img-fluid rounded" alt="Cama para Perros Mediana">
+                <h5 class="mt-3">Cama para Perros Mediana</h5>
+                <p>$45.99</p>
+                <button (click)="openLoginModal()" class="buy-button">Comprar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Grupo de productos 2 -->
+        <div class="carousel-item">
+          <div class="row">
+            <!-- Producto 5 -->
+            <div class="col-md-3">
+              <div class="product-card text-center">
+                <img src="https://ae-pic-a1.aliexpress-media.com/kf/H84b073c187c84808bdbe6f8320213828h/Collar-de-identificaci-n-personalizado-con-grabado-de-gato-Collar-con-nombre-de-cachorro-peque-os.jpg_640x640Q90.jpg_.webp" class="img-fluid rounded" alt="Collar Personalizado">
+                <h5 class="mt-3">Collar Personalizado</h5>
+                <p>$18.50</p>
+                <button (click)="openLoginModal()" class="buy-button">Comprar</button>
+              </div>
+            </div>
+            <!-- Producto 6 -->
+            <div class="col-md-3">
+              <div class="product-card text-center">
+                <img src="https://m.media-amazon.com/images/I/61592kRO5VL._AC_UF894,1000_QL80_.jpg" class="img-fluid rounded" alt="Caseta Portátil">
+                <h5 class="mt-3">Caseta Portátil</h5>
+                <p>$89.99</p>
+                <button (click)="openLoginModal()" class="buy-button">Comprar</button>
+              </div>
+            </div>
+            <!-- Producto 7 -->
+            <div class="col-md-3">
+              <div class="product-card text-center">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAdIVqgoORRnPO-79vxtPRmusHOzLDwub10Q&s" class="img-fluid rounded" alt="Kit de Higiene">
+                <h5 class="mt-3">Kit de Higiene</h5>
+                <p>$25.99</p>
+                <button (click)="openLoginModal()" class="buy-button">Comprar</button>
+              </div>
+            </div>
+            <!-- Producto 8 -->
+            <div class="col-md-3">
+              <div class="product-card text-center">
+                <img src="https://poopyfever.com/cdn/shop/files/Arena-Gato-Biodegradable-Nueva-Imagen-2.png?v=1704488531" class="img-fluid rounded" alt="Arenero para Gatos">
+                <h5 class="mt-3">Arenero para Gatos</h5>
+                <p>$35.00</p>
+                <button (click)="openLoginModal()" class="buy-button">Comprar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      
+     
+    
+      <!-- Indicadores de puntos -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="0" aria-current="true"></button>
+        <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="1"></button>
+      </div>
+    </div>
+  
+  
+  <style>
+    .carousel-item {
+      padding: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+  
+    /* Animación para el carrusel */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  
+    .product-card {
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding: 15px;
+      height: 340px;
+    }
+  
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+  
+    .product-card img {
+      border-radius: 10px;
+      margin-bottom: 10px;
+      max-height: 200px;
+      object-fit: cover; /* Mantiene la imagen dentro de un tamaño fijo sin deformarla */
+    }
+  
+    .product-card h5 {
+      color: #343a40;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+  
+   /* Estilo para el texto del precio */
+.product-card p {
+  color: #415dff; /* Color verde para el precio */
+  font-size: 1.1rem; /* Tamaño de la fuente */
+  font-weight: bold; /* Peso de la fuente */ /* Espacio inferior para alejar el precio del botón */
+}
+
+
+    
+
+/* Estilo inicial del botón de compra */
+.buy-button {
+  position: absolute; /* Posición absoluta dentro de la tarjeta */
+  bottom: 15px; /* Alineado hacia el fondo */
+  left: 50%; /* Centrado horizontalmente */
+  transform: translateX(-50%); /* Alineación exacta en el centro */
+  background-image: linear-gradient(45deg, #49d5ff, #5784ff); /* Gradiente verde */
+  color: white; /* Color de texto blanco */
+  border: none; /* Sin borde */
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px; /* Bordes redondeados */
+  opacity: 0; /* Oculto por defecto */
+  visibility: hidden; /* Invisible */
+  transition: opacity 0.5s ease, visibility 0s 0.5s, background-image 0.3s ease; /* Transición suave para la opacidad y el fondo */
+  cursor: pointer;
+}
+
+
+/* Efecto al pasar el mouse sobre el botón */
+.buy-button:hover {
+  background-image: linear-gradient(45deg, #5784ff, #49d5ff); /* Gradiente más oscuro al hacer hover */
+}
+
+
+/* Mostrar el botón cuando el mouse está sobre la tarjeta */
+.product-card:hover .buy-button {
+  opacity: 1; /* Muestra el botón con opacidad */
+  visibility: visible; /* Hace que el botón sea visible */
+  transition: opacity 0.5s ease, visibility 0s 0s; /* Transición de opacidad sin retraso */
+}
+
+
+   
+
+ /* Ajuste de los indicadores (puntos) */
+ .carousel-indicators {
+    position: relative;
+    top: 10px; /* Baja un poco los indicadores */
+  }
+
+  .carousel-indicators button {
+    background-color: #007bff; /* Color de los puntos */
+    border-radius: 50%; /* Forma redonda */
+    width: 12px; /* Tamaño del punto */
+    height: 12px; /* Tamaño del punto */
+    border: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+  /* Efecto de hover sobre los puntos */
+  .carousel-indicators button:hover {
+    background-color: #0056b3; /* Cambio de color al hacer hover */
+    transform: scale(1.2); /* Aumento de tamaño al hacer hover */
+  }
+
+  /* Punto activo */
+  .carousel-indicators .active {
+    background-color: #0056b3; /* Color del punto activo */
+  }
+  /* Ajustes para los botones de control */
+  .carousel-control-prev,
+  .carousel-control-next {
+    top: 50%;
+    transform: translateY(-50%); /* Centra verticalmente los botones */
+  }
+
+  /* Botón anterior */
+  .carousel-control-prev {
+    left: 10px; /* Alineación a la izquierda */
+  }
+
+  /* Botón siguiente */
+  .carousel-control-next {
+    right: 10px; /* Alineación a la derecha */
+  }
+
+  
+  
+  
+  </style>
+  
+  
+  
+  <div class="container mt-5">
+    <div class="row align-items-center">
+      <!-- Título principal -->
+      <h2 class="text-center mb-5 title-section">
+        Comida favorita para las mascotas
+      </h2>
+  
+      <!-- Imagen con overlay a la izquierda -->
+      <div class="col-md-4 position-relative">
+        <img
+          src="https://img.freepik.com/foto-gratis/composicion-alimentos-mascotas-naturaleza-muerta_23-2148982346.jpg"
+          class="img-fluid rounded w-100"
+          alt="Mascotas felices"
+        />
+        <div class="text-overlay-black">
+          <h5 class="title">CANI PREMIUM ADULTOS 25 Kg</h5>
+          <p class="description">Precio: $35.00</p>
+          <button (click)="openLoginModal()" class="btn btn-primary btn-efecto-cani">Comprar Ahora</button>
+        </div>
+      </div>
+ 
+     <style>
+       /* General */
+.title-section {
+  font-weight: bolder;
+  font-size: 30px;
+  color: #415eff7a;
+}
+
+/* Imagen con overlay */
+.position-relative {
+  position: relative;
+
+  img {
+    border-radius: 10px;
+  }
+}
+
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+ 
+  padding: 10px;
+  border-radius: 8px;
+  width: 80%;
+
+  .title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+
+  .description {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+
+  .btn-efecto-cani {
+    background: linear-gradient(90deg, #4f4cdf, #7595ff);
+    border: none;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+
+    &:hover {
+    background: linear-gradient(90deg, #757eff, #4ca4df);
+    box-shadow: 0 8px 20px rgba(117, 154, 255, 0.4);
+    transform: translateY(-2px);
+    }
+  }
+
+  
+}
+
+.text-overlay-black {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  border-radius: 8px;
+  width: 80%;
+
+  .title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+
+  .description {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+
+  .btn-efecto-cani {
+    background: linear-gradient(90deg, #4f4cdf, #7595ff);
+    border: none;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+
+    &:hover {
+    background: linear-gradient(90deg, #757eff, #4ca4df);
+    box-shadow: 0 8px 20px rgba(117, 154, 255, 0.4);
+    transform: translateY(-2px);
+    }
+  }
+
+  
+}
+
+/* Productos */
+.card {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  .card-img-top {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  .card-body {
+    padding: 10px;
+
+    .card-title {
+      font-size: 0.9rem;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .card-text {
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+    }
+
+    .buy-btn {
+      font-size: 0.8rem;
+      padding: 5px 10px;
+    }
+  }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  /* Ajuste para el título */
+  .title-section {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  /* Ajuste para el texto superpuesto (overlay) */
+  .text-overlay-black {
+    width: 95%;
+    padding: 10px;
+    font-size: 0.9rem;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+
+    .btn-efecto {
+      font-size: 0.85rem;
+      padding: 8px 12px;
+      margin-top: 10px;
+    }
+
+    .title {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .description {
+      font-size: 0.85rem;
+    }
+  }
+
+  .text-overlay {
+    width: 95%;
+    padding: 10px;
+    font-size: 0.9rem;
+    text-align: center;
+   
+    border-radius: 10px;
+
+    .btn-efecto {
+      font-size: 0.85rem;
+      padding: 8px 12px;
+      margin-top: 10px;
+    }
+
+    .title {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .description {
+      font-size: 0.85rem;
+    }
+  }
+
+  /* Ajuste para las tarjetas de producto */
+  .card {
+    margin: 0 auto 15px; /* Centrado y espacio inferior */
+    max-width: 90%; /* Reducir tamaño en pantallas pequeñas */
+    box-shadow: none; /* Eliminar sombras para un diseño más simple */
+
+    .card-img-top {
+      border-radius: 8px;
+    }
+
+    .card-body {
+      padding: 8px;
+      text-align: center;
+
+      .card-title {
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+      }
+
+      .card-text {
+        font-size: 0.8rem;
+        margin-bottom: 8px;
+      }
+
+      .buy-btn {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+      }
+    }
+  }
+
+  /* Ajustes para la disposición en pantallas pequeñas */
+  .container {
+    padding: 10px;
+  }
+
+  .row {
+    flex-direction: column; /* Apilar elementos en columnas */
+  }
+
+  .col-md-4,
+  .col-md-8 {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    margin-bottom: 20px; /* Espacio entre elementos */
+  }
+
+  /* Ajustes para imagen y productos */
+  .position-relative {
+    margin-bottom: 20px;
+    img {
+      max-width: 100%; 
+      margin-left: -12px;/* Asegurar que la imagen no se desborde */
+    }
+  }
+
+  .col-md-4.position-relative {
+    img {
+      max-width: 100%;
+      
+    }
+
+    .text-overlay {
+      width: 90%;
+      padding: 10px;
+
+      .title {
+        font-size: 1rem;
+      }
+
+      .description {
+        font-size: 0.85rem;
+      }
+
+      .btn-efecto-cani {
+        font-size: 0.85rem;
+        padding: 8px 15px;
+      }
+    }
+  }
+}
+
+     </style>
+  
+      <!-- Productos a la derecha -->
+      <div class="col-md-8">
+        <div class="row">
+          <!-- Producto 1 -->
+          <div class="col-md-3 mb-4">
+            <div class="card">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREPtNxGPktN5CCehT-MR6p1WvRVhUvsIXQhg&s"
+                class="card-img-top"
+                alt="Producto 1"
+              />
+              <div class="card-body text-center">
+                <h6 class="card-title">Snack Para Gato Nutrapro Nugget Pollo E Hígado</h6>
+                <p class="card-text">$1.30</p>
+                <button (click)="openLoginModal()" class="btn btn-primary buy-btn">Comprar Ahora</button>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Producto 2 -->
+          <div class="col-md-3 mb-4">
+            <div class="card">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXbziy659G2CnUe1l7pejJcu_0XJEWFcrKlg&s"
+                class="card-img-top"
+                alt="Producto 2"
+              />
+              <div class="card-body text-center">
+                <h6 class="card-title">Comida Para Perro Adulto Raza Mediana Buen Can</h6>
+                <p class="card-text">$4.77</p>
+                <button (click)="openLoginModal()" class="btn btn-primary buy-btn">Comprar Ahora</button>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Producto 3 -->
+          <div class="col-md-3 mb-4">
+            <div class="card">
+              <img
+                src="https://www.supermaxi.com/wp-content/uploads/2024/08/items2Figm2F1000x10002F7861002831039-1-2.jpg"
+                class="card-img-top"
+                alt="Producto 3"
+              />
+              <div class="card-body text-center">
+                <h6 class="card-title">Alimento Para Gatos Sabor A Pollo CHIKI 1 Lb</h6>
+                <p class="card-text">$1.46</p>
+                <button (click)="openLoginModal()" class="btn btn-primary buy-btn">Comprar Ahora</button>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Producto 4 -->
+          <div class="col-md-3 mb-4">
+            <div class="card">
+              <img
+                src="https://purina.com.ec/sites/default/files/styles/webp/public/2022-08/atun_felix.png.webp?itok=FY1LeM9b"
+                class="card-img-top"
+                alt="Producto 4"
+              />
+              <div class="card-body text-center">
+                <h6 class="card-title">Alimento húmedo para gatos, Felix atún, 5kg</h6>
+                <p class="card-text">$5.00</p>
+                <button (click)="openLoginModal()" class="btn btn-primary buy-btn">Comprar Ahora</button>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Producto 5 -->
+          <div class="col-md-3 mb-4">
+            <div class="card">
+              <img
+                src="https://m.media-amazon.com/images/I/61wuLYvX6dL._AC_UF1000,1000_QL80_.jpg"
+                class="card-img-top"
+                alt="Producto 5"
+              />
+              <div class="card-body text-center">
+                <h6 class="card-title"> Doglo: Golosinas de carne seca para perros</h6>
+                <p class="card-text">$1.50</p>
+                <button (click)="openLoginModal()" class="btn btn-primary buy-btn">Comprar Ahora</button>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Producto 6 -->
+          <div class="col-md-3 mb-4">
+            <div class="card">
+              <img
+                src="https://purina.com.ec/sites/default/files/2023-09/VANITY-MKP-787-329_DC-MAXIMUS-TRIPLE-PROTEINA_CARNE-POLLO-PESCADO_05_AF_cv.png"
+                class="card-img-top"
+                alt="Producto 6"
+              />
+              <div class="card-body text-center">
+                <h6 class="card-title">Purina DogChow para razas medianas y grandes 25kg</h6>
+                <p class="card-text">$35.00</p>
+                <button (click)="openLoginModal()" class="btn btn-primary buy-btn">Comprar Ahora</button>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Producto 7 -->
+          <div class="col-md-3 mb-4">
+            <div class="card">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfqLGSJk-igyH20-e-7vUvOsY01uyH53M-lg&s"
+                class="card-img-top"
+                alt="Producto 7"
+              />
+              <div class="card-body text-center">
+                <h6 class="card-title">Michu Comida Para Gato, Sabor a Pollo 10Kg </h6>
+                <p class="card-text">$20.00</p>
+                <button (click)="openLoginModal()" class="btn btn-primary buy-btn">Comprar Ahora</button>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Producto 8 -->
+          <div class="col-md-3 mb-4">
+            <div class="card">
+              <img
+                src="https://www.profesionalvet.com.ar/1670-home_default/bocaditos-de-la-granja-45-grs.jpg"
+                class="card-img-top"
+                alt="Producto 8"
+              />
+              <div class="card-body text-center">
+                <h6 class="card-title">Bocaditos de la granja,Golosinas para gatos 45kg </h6>
+                <p class="card-text">$15.30</p>
+                <button (click)="openLoginModal()" class="btn btn-primary buy-btn">Comprar Ahora</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Marcas de Mascotas -->
+  <div class="container mt-5">
+    <h3 class="text-center" style="font-size: 30px; color: #415eff9f;">Marcas Populares</h3>
+    <div class="row mt-5">
+      <!-- Marca 1 -->
+      <div class="col-md-2 text-center mb-4">
+        <img src="https://www.procan.com.ec/wp-content/uploads/2017/11/pro-can@2x.png" alt="Procan" class="img-fluid marcas-img" />
+      </div>
+      <!-- Marca 2 -->
+      <div class="col-md-2 text-center mb-4">
+        <img src="https://coveal.com.ec/wp-content/uploads/2022/06/nutrapro.jpg" alt="Nutrapro" class="img-fluid marcas-img" />
+      </div>
+      <!-- Marca 3 -->
+      <div class="col-md-2 text-center mb-4">
+        <img src="https://1000marcas.net/wp-content/uploads/2020/11/Purina-Logo.png" alt="Purina" class="img-fluid marcas-img" />
+      </div>
+      <!-- Marca 4 -->
+      <div class="col-md-2 text-center mb-4">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8HeEYADB-wczF9bmmStFnQ9npWWEaitbITQ&s" alt="Michu" class="img-fluid marcas-img" />
+      </div>
+      <!-- Marca 5 -->
+      <div class="col-md-2 text-center mb-4">
+        <img src="https://peluditos.ec/cdn/shop/collections/Logos_Marcas_0015_Buen_Can.jpg?v=1674748969" alt="buen can" class="img-fluid marcas-img" />
+      </div>
+      <!-- Marca 6 -->
+      <div class="col-md-2 text-center mb-4">
+        <img src="https://www.pronacatqma.com/images/logos/logo_chiki1.png" alt="chiki" class="img-fluid marcas-img" />
+      </div>
+    </div>
+  </div>
+  
+  <!-- Estilos para reducir el tamaño de las imágenes -->
+  <style>
+    .marcas-img {
+      max-width: 120px; /* Puedes ajustar este valor para cambiar el tamaño */
+      margin: 0 auto;
+    }
+  </style>
+  
+
+  <footer class="footer mt-auto py-5">
+    <div class="container">
+      <div class="row">
+        <!-- Información de la empresa -->
+        <div class="col-md-4 footer-section">
+          <h5 class="footer-title">Petshop</h5>
+          <p class="footer-text">© 2024 Petshop. Todos los derechos reservados.</p>
+          <p class="footer-text">Dirección: Av. Teniente Hugo Ortiz y Juan Ante (Quito, Ecuador)</p>
+          <p class="footer-text">Teléfono: 0979395533 / 02-3060877</p>
+          <p class="footer-text">Correo: <a href="mailto:dkq.taco&#64;yavirac.edu.ec" class="footer-link">dkq.taco&#64;yavirac.edu.ec</a></p>
+
+        </div>
+  
+        <!-- Enlaces útiles -->
+        <div class="col-md-4 footer-section">
+          <h5 class="footer-title">Enlaces útiles</h5>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">Inicio</a></li>
+            <li><a href="#" class="footer-link">Sobre nosotros</a></li>
+            <li><a href="#" class="footer-link">Categorías</a></li>
+            <li><a href="#" class="footer-link">Productos</a></li>
+            <li><a href="#" class="footer-link">Contáctanos</a></li>
+          </ul>
+        </div>
+  
+        <!-- Suscripción al boletín -->
+        <div class="col-md-4 footer-section">
+          <h5 class="footer-title">Suscríbete a nuestro boletín</h5>
+          <form class="newsletter-form">
+            <div class="mb-3">
+              <input type="email" class="form-control" placeholder="Tu correo electrónico" />
+            </div>
+            <button type="submit" class="btn btn-primary">Suscribirse</button>
+          </form>
+        </div>
+      </div>
+  
+      <hr class="footer-divider my-4" />
+  
+      <div class="row">
+        <!-- Redes sociales -->
+        <div class="col-md-6 text-center text-md-start">
+          <h5 class="footer-title">Síguenos en</h5>
+          <ul class="social-icons">
+            <li><a href="#" class="footer-icon"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="#" class="footer-icon"><i class="fab fa-instagram"></i></a></li>
+        
+          </ul>
+        </div>
+  
+        <!-- Información adicional -->
+        <div class="col-md-6 text-center text-md-end">
+          <p class="footer-text">Desarrollado por el equipo de Petshop</p>
+          <p class="footer-text"><a href="#" class="footer-link">Política de privacidad</a> | <a href="#" class="footer-link">Términos y condiciones</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  
+
+  <style>
+   .footer {
+  background: linear-gradient(45deg, #283593, #395dff); /* Gradiente azul oscuro */
+  color: #fff;
+  padding: 40px 20px;
+  margin-bottom: -100px;
+  border-top: 4px solid #00eeff;
+
+  .footer-section {
+    margin-bottom: 20px;
+
+    .footer-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    .footer-text {
+    
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .footer-link {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #00e5ff;
+      }
+    }
+  }
+
+  .footer-links {
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin-bottom: 10px;
+
+      .footer-link {
+        font-size: 1rem;
+        font-weight: 500;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .newsletter-form {
+    .form-control {
+      background: #2c387e;
+      color: #fff;
+      border: 1px solid #6a7bff;
+      border-radius: 5px;
+      padding: 10px;
+      transition: all 0.3s ease;
+
+      &::placeholder {
+        color: #b3c4ff;
+      }
+
+      &:focus {
+        background: #3949ab;
+        outline: none;
+        box-shadow: 0 0 10px rgba(58, 91, 255, 0.8);
+      }
+    }
+
+    .btn {
+      background: #00e5ff;
+      color: #283593;
+      font-weight: bold;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: #00c4e5;
+        box-shadow: 0 4px 10px rgba(0, 229, 255, 0.6);
+      }
+    }
+  }
+
+  .footer-divider {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .social-icons {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    li {
+      .footer-icon {
+        font-size: 1.5rem;
+        color: #fff;
+        transition: transform 0.3s ease, color 0.3s ease;
+
+        &:hover {
+          transform: scale(1.2);
+          color: #00e5ff;
+        }
+      }
+    }
+  }
+}
+
+
+  </style>
+
+
+<style>
+ .modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente */
+  backdrop-filter: blur(5px); /* Efecto de desenfoque */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  opacity: 0; /* Inicialmente oculto */
+  pointer-events: none; /* Desactiva interacción */
+  transition: opacity 0.5s ease-in-out;
+
+  &.show {
+    opacity: 1; /* Visible */
+    pointer-events: auto; /* Activa interacción */
+  }
+
+  .modal-content {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 90%;
+
+    h3 {
+      margin-bottom: 1rem;
+      color: #5558ff;
+      font-size: 1.5rem;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      color: #666666;
+    }
+
+    .modal-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+
+      button {
+        flex: 1;
+        padding: 0.8rem 1.2rem;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #4869ff, #399fff);
+        color: #ffffff;
+
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+
+      .btn-secondary {
+        background-color: #6c757d;
+        color: #ffffff;
+
+        &:hover {
+          background-color: #5a6268;
+        }
+      }
+    }
+
+    .btn-close {
+      margin-top: 1.5rem;
+      background: none;
+      border: none;
+      color: #888;
+      font-size: 0.9rem;
+      text-decoration: underline;
+      cursor: pointer;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #555;
+      }
+    }
+  }
+}
+
+</style>
+  
+<app-loading-spinner *ngIf="loading"></app-loading-spinner>

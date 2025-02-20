@@ -1,0 +1,62 @@
+/* src/app/shared/header/header.component.scss */
+
+.navbar {
+    background-color: #4570ff; // Color de fondo azul
+    border-radius: 0;
+    margin-bottom: 13px;
+    min-height: 10px;
+    border-bottom: 2px solid #00eeff; // Borde superior redondeado
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Sombra sutil
+  }
+
+  .logo-img {
+    width: 50px;
+    height: auto; 
+    display: block; 
+    margin: 0 auto; 
+    filter: brightness(0) invert(1);
+  }
+  
+  .navbar-brand {
+    font-family: 'Roboto', sans-serif; // Tipo de fuente
+    font-weight: bold; // Negrita
+    color: #fff; // Color de texto blanco
+  }
+  
+  .navbar-toggler {
+    border: none; // Sin borde
+  }
+  
+  .navbar-nav .nav-link {
+    font-family: 'Roboto', sans-serif; // Tipo de fuente
+    font-weight: 500; // Peso medio
+    color: #fff; // Color de texto blanco
+    transition: color 0.3s; 
+    position: relative;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;  // Transición suave del color del texto
+  }
+  
+  .navbar-nav .nav-link:hover,
+  .navbar-nav .nav-link:focus {
+    color: #00eeff !important;
+    transform: translateY(-3px);
+  }
+  
+  .navbar-nav .nav-link:active {
+    transform: translateY(2px); // Simula el hundimiento al hacer clic
+    transition: transform 0.1s ease-in; // Hace que el hundimiento sea rápido y natural
+  }
+
+  .nav-item:not(:last-child) {
+    margin-right: 4rem;
+ // Margen derecho entre elementos de la barra de navegación
+  }
+
+  .search-bar {
+    background-color: #4570ff; // Color de fondo igual al navbar
+    padding: 15px 0; // Espaciado vertical
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Sombra similar al navbar
+  }
+  
+  
+ 

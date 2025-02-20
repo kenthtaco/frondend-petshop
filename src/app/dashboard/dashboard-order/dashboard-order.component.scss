@@ -1,0 +1,464 @@
+.dashboard {
+  min-height: 150vh;
+  min-width: 190vh;
+  padding: 10rem;
+  background-color: #2a2d41;
+  background-image: linear-gradient(-50deg, #161836, #444870);
+  margin: 0;
+
+  .row {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap; /* Asegura el ajuste en pantallas pequeñas */
+  }
+
+  .form-container {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 2.5rem;
+    background: rgba(42, 45, 65, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 2rem;
+
+      .form-logo {
+        max-width: 80px;
+        margin-bottom: 1rem;
+        border-radius: 50%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .form-title {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #00ff88;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    .form-control {
+      width: 100%;
+      background-color: rgba(50, 53, 92, 0.9);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      padding: 0.8rem;
+      margin-bottom: 1.5rem;
+      transition: box-shadow 0.3s ease;
+
+      &:focus {
+        border-color: #00ff88;
+        box-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
+      }
+    }
+
+    .btn {
+      width: 100%;
+      padding: 0.8rem;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: white;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+
+      &.btn-success {
+        background: linear-gradient(45deg, #00ff88, #00cc6e);
+        border: none;
+
+        &:hover {
+          background: linear-gradient(45deg, #00cc6e, #00a954);
+          transform: translateY(-2px);
+        }
+      }
+
+      &.btn-secondary {
+        background: linear-gradient(45deg, #444870, #32355c);
+        border: none;
+
+        &:hover {
+          background: linear-gradient(45deg, #32355c, #1e203b);
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+
+  .table-container {
+    position: relative;
+    margin: 1rem auto;
+    margin-top: -100px;
+    width: 85%;
+    max-width: 1000px;
+    padding: 2rem;
+    background: rgba(42, 45, 65, 0.85);
+    backdrop-filter: blur(8px);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .section-title {
+    color: #fff;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .order-card {
+    background: rgba(30, 33, 55, 0.9);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .order-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  }
+
+  .order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+  }
+
+  .order-id {
+    color: #00ff88;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  .order-date {
+    color: #dcdcdc;
+    font-size: 0.9rem;
+  }
+
+  .order-body {
+    margin: 1rem 0;
+    color: #dcdcdc;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .order-body strong {
+    color: #fff;
+  }
+
+  .order-details {
+    margin-top: 1rem;
+    background: rgba(42, 45, 65, 0.8);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .order-details h6 {
+    color: #00ff88;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  .detail-item {
+    margin-bottom: 1rem;
+    color: #dcdcdc;
+  }
+
+  .detail-item strong {
+    color: #fff;
+  }
+
+  .product-name {
+    color: #00ff88;
+  }
+
+  .product-price {
+    color: #ff4b4b;
+  }
+
+  .order-actions {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .order-actions button {
+    background: linear-gradient(45deg, #ff4b4b, #cc3a3a);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+  }
+
+  .order-actions button:hover {
+    background: linear-gradient(45deg, #cc3a3a, #a32b2b);
+    transform: translateY(-3px);
+  }
+}
+
+@media (max-width: 1200px) {
+  .dashboard {
+    min-height: 100vh;
+    min-width: 100%;
+    padding: 6rem;
+    background-color: #2a2d41;
+    background-image: linear-gradient(-50deg, #161836, #444870);
+    margin: 0;
+  }
+
+  .form-container {
+    width: 70%;
+  }
+
+  .table-container {
+    width: 190%;
+    padding: 3.5rem; // Reducimos el padding en pantallas más pequeñas
+  }
+
+  .row {
+    padding: 2.8rem; // Reducimos el padding en pantallas más pequeñas
+    gap: 1.5rem; // Reducimos el espacio entre los elementos
+  }
+
+  .col-lg-12 {
+    width: 100%; // Para pantallas pequeñas, ocupa el 100% del ancho
+  }
+}
+
+@media (max-width: 992px) {
+  .dashboard {
+    min-height: 100vh;
+    min-width: 100%;
+    padding: 5rem;
+    background-color: #2a2d41;
+    background-image: linear-gradient(-50deg, #161836, #444870);
+    margin: 0;
+  }
+
+  .form-container {
+    width: 75%;
+  }
+
+  .table-container {
+    width: 180%;
+    padding: 3.5rem; 
+  }
+
+  .order-card {
+    padding: 3rem;
+  }
+
+  .order-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .order-body {
+    font-size: 0.9rem;
+  }
+
+  .row {
+    padding: 2.6rem; // Menos padding en pantallas aún más pequeñas
+    gap: 1rem; // Espacio aún más pequeño entre los elementos
+    justify-content: center; // Centramos los elementos en pantallas más pequeñas
+  }
+
+  .col-lg-12 {
+    width: 100%; // Para pantallas pequeñas, ocupa el 100% del ancho
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    min-height: 100vh;
+    min-width: 100%;
+    padding: 4rem;
+    background-color: #2a2d41;
+    background-image: linear-gradient(-50deg, #161836, #444870);
+    margin: 0;
+  }
+
+  .form-container {
+    width: 80%;
+  }
+
+  .table-container {
+    width: 95%;
+    padding: 1rem; // Menos padding en pantallas aún más pequeñas
+    margin-top: -50px; // Ajuste en la posición para que no se vea tan arriba en pantallas pequeñas
+  }
+
+  .order-card {
+    padding: 3rem;
+  }
+
+  .order-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .order-body {
+    font-size: 0.85rem;
+  }
+
+  .row {
+    padding: 2.5rem; // Reducimos aún más el padding
+    gap: 0.8rem; // Menos espacio entre los elementos
+    justify-content: center; // Alineación centrada en dispositivos pequeños
+  }
+
+  .col-lg-12 {
+    width: 100%; // Para pantallas pequeñas, ocupa el 100% del ancho
+  }
+}
+
+@media (max-width: 576px) {
+  .dashboard {
+    min-height: 100vh;
+    min-width: 100%;
+    padding: 3rem;
+    background-color: #2a2d41;
+    background-image: linear-gradient(-50deg, #161836, #444870);
+    margin: 0;
+  }
+
+  .form-container {
+    width: 90%;
+    top: 70%;
+  }
+
+  .table-container {
+    width: 100%; // Se ajusta el ancho a 100% en pantallas muy pequeñas
+    padding: 1rem; // Menos padding
+  }
+
+  .order-card {
+    padding: 2rem; // Reducir el padding para adaptarse a pantallas pequeñas
+  }
+
+  .order-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .order-body {
+    font-size: 0.75rem; // Reduce el tamaño de fuente para mayor legibilidad
+  }
+
+  .row {
+    padding: 2.3rem; // Muy poco padding en pantallas más pequeñas
+    gap: 0.5rem; // Minimizar el espacio entre elementos
+    justify-content: center; // Asegura que todo se alinee al centro
+  }
+
+  .col-lg-12 {
+    width: 100%; // Para pantallas pequeñas, ocupa el 100% del ancho
+  }
+}
+
+@media (max-width: 500px) {
+  .dashboard {
+    min-height: 100vh;
+    min-width: 100%;
+    padding: 2.5rem; // Menos padding para pantallas muy pequeñas
+    background-color: #2a2d41;
+    background-image: linear-gradient(-50deg, #161836, #444870);
+    margin: 0;
+  }
+
+  .form-container {
+    width: 95%;
+    top: 75%; // Ajuste en la posición para pantallas más pequeñas
+  }
+
+  .table-container {
+    width: 100%;
+    padding: 1rem; // Reducido para no sobrecargar la pantalla
+  }
+
+  .order-card {
+    padding: 1.8rem; // Aun menos padding
+  }
+
+  .order-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .order-body {
+    font-size: 0.7rem; // Más pequeño para adaptarse a la pantalla
+  }
+
+  .row {
+    padding: 1.5rem; // Aún más pequeño el padding
+    gap: 0.3rem; // Muy poco espacio entre los elementos
+    justify-content: center; // Asegura que todo se alinee al centro
+  }
+
+  .col-lg-12 {
+    width: 100%; // Para pantallas pequeñas, ocupa el 100% del ancho
+  }
+
+  @media (max-width: 412px) {
+    .dashboard {
+      min-height: 100vh;
+      min-width: 100%;
+      padding: 2rem; // Menos padding para pantallas aún más pequeñas
+      background-color: #2a2d41;
+      background-image: linear-gradient(-50deg, #161836, #444870);
+      margin: 0;
+    }
+  
+    .form-container {
+      width: 95%;
+      top: 80%; // Ajuste en la posición para pantallas muy pequeñas
+    }
+  
+    .table-container {
+      width: 100%;
+      padding: 3.6rem;
+      justify-content: center;  // Menos padding en pantallas pequeñas
+    }
+  
+    .order-card {
+      padding: 1.5rem; // Menos padding
+    }
+  
+    .order-header {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .order-body {
+      font-size: 0.65rem; // Más pequeño para pantallas más pequeñas
+    }
+  
+    .row {
+      padding: 1.3rem; // Muy poco padding
+      gap: 0.3rem; // Espacio mínimo
+      justify-content: center; // Mantener todo centrado
+    }
+    .col-lg-12 {
+      width: 400px; // Para pantallas pequeñas, ocupa el 100% del ancho
+    }
+  }
+}

@@ -1,0 +1,97 @@
+.perfil-container {
+    margin-top: 90px;  /* Ajusta según sea necesario */
+    margin-bottom: 50px; 
+    /* Agrega espacio antes del footer */
+  }
+  
+  
+  
+  
+  .user-panel {
+    background: #f9f9f9;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .user-panel .user-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .user-panel .user-role {
+    font-size: 0.9rem;
+  }
+  
+  .user-panel .nav-link {
+    font-size: 0.95rem;
+    color: #4570ff;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-panel .nav-link i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+  }
+  
+  .user-panel .nav-link:hover {
+    background: #4570ff;
+    color: #fff;
+    border-radius: 5px;
+  }
+  
+  .perfil-content {
+    background: #fff;
+    border-radius: 10px;
+    margin-top: 100px;
+  }
+  
+  .perfil-content h3 {
+    font-weight: bold;
+    color: #4570ff;
+  }
+  
+  .perfil-content p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* Estilos para la zona redonda y adaptación de la imagen */
+.profile-container {
+  position: relative;
+  width: 150px;  /* Ajusta el tamaño según sea necesario */
+  height: 150px; /* Mantiene la forma redonda */
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 50%; 
+  /* Hace la zona redonda */
+}
+
+.profile-image {
+  width: 100%;  /* Asegura que la imagen ocupe el 100% de la zona */
+  height: 100%; /* Mantiene la proporción */
+  object-fit: cover; /* Asegura que la imagen se recorte y se ajuste bien */
+}
+
+/* Estilo para el botón de la cámara */
+.camera-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.camera-logo-image {
+  width: 40px; /* Ajusta el tamaño del logo de la cámara */
+  height: 40px; /* Ajusta el tamaño del logo de la cámara */
+}
+
+  
+  
+  

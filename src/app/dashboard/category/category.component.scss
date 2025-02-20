@@ -1,0 +1,293 @@
+.dashboard {
+  min-height: 250vh;
+  min-width: 190vh;
+  padding: 10rem;
+  background-color: #2a2d41;
+  background-image: linear-gradient(-50deg, #161836, #444870);
+  margin: 0;
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
+    
+    .form-container {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60%;
+      max-width: 900px;
+      max-height:900px;
+      padding: 2.5rem;
+      background: rgba(42, 45, 65, 0.85);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+
+      .form-header {
+        text-align: center;
+        margin-bottom: 2rem;
+
+        .form-logo {
+          max-width: 80px;
+          margin-bottom: 1rem;
+          border-radius: 50%;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-title {
+          font-size: 1.8rem;
+          font-weight: bold;
+          color: #00ff88;
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+      }
+
+      .form-control {
+        width: 100%;
+        background-color: rgba(50, 53, 92, 0.9);
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 10px;
+        padding: 0.8rem;
+        margin-bottom: 1.5rem;
+        transition: box-shadow 0.3s ease;
+
+        &:focus {
+          border-color: #00ff88;
+          box-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
+        }
+      }
+
+      .btn {
+        width: 100%;
+        padding: 0.8rem;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: white;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+
+      .btn-success {
+        background: linear-gradient(45deg, #00ff88, #00cc6e);
+        border: none;
+
+        &:hover {
+          background: linear-gradient(45deg, #00cc6e, #00a954);
+          transform: translateY(-2px);
+        }
+      }
+
+      .btn-secondary {
+        background: linear-gradient(45deg, #444870, #32355c);
+        border: none;
+
+        &:hover {
+          background: linear-gradient(45deg, #32355c, #1e203b);
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+
+  .table-container {
+    position: relative;
+    margin-bottom: 500px;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 70vh;
+    padding: 2rem;
+    margin-left: 0;
+    background: rgba(42, 45, 65, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    overflow-x: auto;
+
+    .table {
+      width: 100%;
+      border-spacing: 0;
+      border-collapse: collapse;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+
+      thead {
+        background: linear-gradient(45deg, #444870, #32355c);
+        color: #ff0000;
+
+        th {
+          padding: 1rem;
+          font-weight: bold;
+          text-align: left;
+          border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+          white-space: nowrap;
+        }
+      }
+
+      tbody {
+        tr {
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: rgba(50, 53, 92, 0.7);
+          }
+
+          td {
+            padding: 0.8rem;
+            color: #00ff2a;
+            background-color: #343957;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+          }
+
+          .btn-primary {
+            background: linear-gradient(45deg, #4b5dff, #3a47cc);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+
+            &:hover {
+              background: linear-gradient(45deg, #3a47cc, #2a35a0);
+              transform: translateY(-2px);
+            }
+          }
+
+          .btn-danger {
+            background: linear-gradient(45deg, #ff4b4b, #cc3a3a);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+
+            &:hover {
+              background: linear-gradient(45deg, #cc3a3a, #a32b2b);
+              transform: translateY(-2px);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* Ajustes responsivos para laptops */
+  @media (max-width: 1200px) {
+    min-height: 70vh;
+    min-width: 40vw;
+    margin-left: 0;
+
+    .row {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-container {
+      width: 90%;
+    }
+
+    .table-container {
+      width: 100%;
+      padding: 1rem;
+
+      .table {
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+    min-height: 70vh;
+    min-width: 40vw;
+    margin-left: 0;
+
+    .row {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-container {
+      width: 90%;
+    }
+
+    .table-container {
+      width: 90%;
+      padding: 1rem;
+
+      .table {
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    min-height: 10vh;
+    min-width: 40vw;
+    margin-left: 0;
+    padding: 1rem;
+
+    .row {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-container {
+      width: 100%;
+      
+      margin-top: 60px;
+      margin-left: -10px;
+    }
+
+    .table-container {
+      width: 80%;
+      padding-left: 10px;
+      
+      margin-top: 40rem;
+      margin-left: 1rem;
+
+      .table {
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    min-height: 1000px;
+    min-width: 428px;
+    margin: 0;
+
+    .row {
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+    }
+
+    .form-container {
+      width: 100%;
+      
+      margin-top: 60px;
+      margin-left: -10px;
+    }
+
+    .table-container {
+      width: 80%;
+      padding-left: 10px;
+      
+      margin-top: 40rem;
+      margin-left: 1rem;
+
+      .table {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}

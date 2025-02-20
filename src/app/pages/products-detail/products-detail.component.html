@@ -1,0 +1,643 @@
+
+
+ 
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg  fixed-top shadow">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand d-flex align-items-center" routerLink="/usuario">
+        <img
+          src="https://cielodemascotas.com/wp-content/uploads/2022/03/cropped-logo-cielo-de-mascotas-01-1.png"
+          alt="logo"
+          class="logo-img me-2"
+          style="height: 40px;" 
+        />
+        <span class="fw-bold" style="font-size: 20px;">PetShop</span>
+      </a>
+  
+      <!-- Navbar toggler (Mobile view) -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <!-- Navbar links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <!-- Categorías -->
+          <a class="nav-link nav-link-item fw-semibold">
+            <i class="fas fa-th-large me-1"></i> Categorías
+          </a>
+      
+          <!-- Productos -->
+          <a class="nav-link nav-link-item fw-semibold" routerLink="/products/:id">
+            <i class="fas fa-box-open me-1"></i> Productos
+          </a>
+      
+        
+          <!-- Noticias -->
+          <a class="nav-link nav-link-item fw-semibold"  >
+            <i class="fas fa-newspaper me-1"></i> Noticias
+          </a>
+      
+          <!-- Contacto -->
+          <a class="nav-link nav-link-item fw-semibold" >
+            <i class="fas fa-envelope me-1"></i> Contáctanos
+          </a>
+
+         
+      
+          <!-- Login -->
+          <a class="nav-link nav-link-item fw-semibold" routerLink="/perfil">
+            <i class="fas fa-sign-in-alt me-1"></i> Mi Perfil
+          </a>
+      
+          <!-- Registro -->
+          <a class="nav-link nav-link-item fw-semibold"  routerLinkActive="active" (click)="openLogoutModal()">
+            <i class="fas fa-user-plus me-1"></i> Cerrar sesion
+          </a>
+
+            <!-- Carrito -->
+<a class="cart-icon position-relative" routerLink="/carrito">
+  <i class="fas fa-shopping-cart me-1"></i> 
+ 
+  <span *ngIf="cartCount > 0" class="cart-badge">{{ cartCount }}</span>
+</a>
+        </ul>
+      </div>
+      
+    </div>
+  </nav>
+  
+  <style>
+    
+    .cart-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 15px;  /* Controlar el tamaño de la bolita */
+  height: 15px;  /* Controlar el tamaño de la bolita */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;  /* Tamaño de la fuente */
+  font-weight: bold;
+}
+.nav-link {
+  position: relative; /* Necesario para que la bolita se posicione sobre el texto */
+}
+
+.cart-icon {
+  text-decoration: none; /* Quitar subrayado o decoraciones */
+  color: white; /* Heredar el color del texto actual */
+  padding: 0; /* Eliminar cualquier padding */
+  border: none; /* Quitar cualquier borde */
+  background: none; /* Sin fondo */
+  cursor: pointer; /* Cambiar el cursor a pointer */
+  transition: color 0.3s, background-color 0.3s;
+
+      &:hover {
+        color: #00eeff;
+        
+      }
+
+  &:focus {
+    outline: none; /* Elimina el contorno del foco */
+  }
+}
+
+
+
+  
+  </style>
+  
+  <style>
+   /* src/app/shared/header/header.component.scss */
+  
+  .navbar {
+    background-color: #4570ff; /* Fondo del navbar */
+    border-radius: 0;
+    margin-bottom: 15px;
+    min-height: 60px;
+    border-bottom: 3px solid #00eeff; /* Línea decorativa inferior */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    padding: 10px 20px; /* Espaciado interno */
+  
+    /* Transiciones suaves */
+    transition: background-color 0.3s ease, border-bottom 0.3s ease;
+  
+    &:hover {
+      border-bottom: 3px solid #00ff4c; /* Línea inferior cambia de color */
+    }
+  
+    .navbar-brand {
+      font-family: 'Roboto', sans-serif;
+      font-weight: bold;
+      font-size: 1.5rem; /* Tamaño de texto de la marca */
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px; /* Espaciado entre logo y texto */
+      text-decoration: none;
+      transition: color 0.3s;
+  
+      &:hover {
+        color: #00e1ff; /* Color al pasar el mouse */
+      }
+  
+      .logo-img {
+        height: 40px;
+        width: auto;
+        filter: brightness(0) invert(1); /* Asegura buena visibilidad en fondo oscuro */
+      }
+    }
+  
+    .navbar-toggler {
+      border: none;
+      outline: none;
+      background-color: #fff; /* Fondo claro para contraste */
+      color: #4570ff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+  
+      &:hover {
+        background-color: #00eeff;
+        color: #fff;
+      }
+    }
+  
+    .navbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 20px; /* Espaciado uniforme entre enlaces */
+  
+      .nav-link {
+        font-family: 'Roboto', sans-serif;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: color 0.3s, background-color 0.3s;
+  
+        &:hover {
+          color: #00eeff;
+          background-color: rgba(255, 255, 255, 0.1); /* Fondo sutil al pasar el mouse */
+        }
+  
+        i {
+          margin-right: 5px; /* Espaciado entre ícono y texto */
+        }
+      }
+    }
+  
+    .logo-img {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+      filter: brightness(0) invert(1);
+    }
+  
+    .navbar-toggler {
+      border: none;
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 5px 10px;
+      border-radius: 5px;
+  
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+    }
+  
+    .navbar-nav {
+      .nav-link {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        color: #fff;
+        font-size: 1rem;
+        transition: color 0.3s, transform 0.2s ease-in-out;
+        padding: 20px 15px;
+        border-radius: 5px;
+  
+        &:hover,
+        &:focus {
+          color: #6eeeff !important;
+          transform: translateY(-2px);
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+  
+        &:active {
+          transform: translateY(1px);
+          transition: transform 0.1s ease-in;
+        }
+      }
+    }
+  
+    .search-bar {
+      background-color: #4570ff;
+      padding: 15px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  
+    .nav-item {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+  
+    @media (max-width: 768px) {
+    .navbar {
+      padding: 5px 10px; /* Menos espacio vertical */
+     /* Reducir la altura del navbar */
+    }
+  
+    .navbar-nav {
+      gap: 10px; /* Menos espacio entre los enlaces */
+    }
+  
+    .navbar-toggler {
+      display: block;
+      margin-top: 5px; /* Reducir el espacio encima del botón */
+    }
+  
+    .logo-img {
+      width: 35px; /* Reducir aún más el tamaño del logo */
+    }
+  
+    .navbar-nav {
+      .nav-link {
+        font-size: 0.85rem; /* Reducir el tamaño de la fuente */
+        padding: 8px 12px;
+        text-align: left;  /* Menos espacio dentro de los enlaces */
+      }
+    }
+  }
+  
+  
+  
+  }
+  
+  </style>
+  
+
+  
+  <div class="background-container">
+    <div class="container mt-4">
+      <div class="row" *ngFor="let category of categories">
+        <!-- Solo mostramos el título de la categoría si hay productos en esa categoría -->
+        <h2 *ngIf="productsByCategory[category.name]?.length > 0" class="category-title">{{ category.name }}</h2>
+  
+        <!-- Mostrar los productos de la categoría -->
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4" *ngFor="let product of productsByCategory[category.name]">
+          <div class="card h-100">
+            <div class="image-container">
+              <img 
+                *ngIf="product.image" 
+                [src]="'data:image/jpeg;base64,' + product.image" 
+                alt="Product Image" 
+                class="card-img-top product-image"
+              >
+            </div>
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text">{{ product.description }}</p>
+              <p class="card-text"><strong>Precio:</strong> {{ product.price | currency:'USD':'symbol':'1.2-2' }}</p>
+            <button class="btn btn-primary mt-auto" (click)="openModal(product)">Ver detalles</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="productModalLabel">
+          {{ selectedProduct?.name }}
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="selectedProduct">
+          <!-- Mostrar imagen desde 'imageUrl' -->
+          <img *ngIf="selectedProduct.imageUrl" [src]="selectedProduct.imageUrl" alt="Product Image" class="img-fluid mb-3" style="max-width: 100%; height: auto; object-fit: cover;">
+
+          <!-- Mostrar imagen desde 'image' (Base64) -->
+          <img *ngIf="selectedProduct.image" [src]="'data:image/jpeg;base64,' + selectedProduct.image" alt="Product Image" class="img-fluid mb-3" style="max-width: 100%; height: auto; object-fit: cover;">
+          
+          <p><strong>Descripción:</strong> {{ selectedProduct?.description }}</p>
+          <p><strong>Precio:</strong> {{ selectedProduct?.price | currency:'USD':'symbol':'1.2-2' }}</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="addToCartAndCloseModal(selectedProduct)">Añadir al carrito</button>
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+
+  /* Título del modal centrado y con fuente diferente */
+.modal-header .modal-title {
+  font-size: 1.25rem; /* Reducción del tamaño */
+  font-family: 'Lato', sans-serif; /* Fuente diferente */
+  font-weight: 500; /* Peso moderado para el título */
+  text-align: center; /* Centrado */
+  width: 100%; /* Asegura que ocupe el 100% del ancho */
+  margin: 0 auto; /* Centrado con margen automático */
+}
+
+  /* Estilo para la imagen del producto dentro del modal */
+.modal-body img {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para los botones */
+.modal-footer .btn {
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.modal-footer .btn:hover {
+  transform: scale(1.05);
+}
+
+/* Estilo del encabezado del modal */
+.modal-header {
+  background-color: #007bff; /* Cambia el color según tu preferencia */
+  color: white;
+}
+
+</style>
+
+<!-- Modal de Confirmación para Cerrar Sesión -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" style="max-width: 400px;">
+    <div class="modal-content">
+      <div class="modal-header border-0 d-flex justify-content-center align-items-center">
+        <h5 class="modal-title" id="logoutModalLabel">
+          <i class="bi bi-box-arrow-right me-2"></i>Confirmar Cierre de Sesión
+        </h5>
+        
+      </div>
+      <div class="modal-body text-center">
+        <p class="fs-5 text-dark mb-4">¿Estás seguro de que deseas cerrar sesión?</p>
+        <img src="https://img.icons8.com/ios/452/logout-rounded-left.png" alt="Logout Icon" width="80">
+      </div>
+      <div class="modal-footer border-0 justify-content-center">
+        <button type="button" class="btn btn-secondary me-3" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" (click)="logout()">Cerrar Sesión</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="text-center">
+          <!-- Ícono de Check más grande -->
+          <i *ngIf="isSuccess" class="fa fa-check-circle text-success" style="font-size: 4rem;"></i>
+          <!-- Ícono de Error más grande -->
+          <i *ngIf="!isSuccess" class="fa fa-times-circle text-danger" style="font-size: 4rem;"></i>
+        </div>
+        <!-- Título con tamaño reducido y negrita -->
+        <h5 class="modal-title mt-3 fw-bold" style="font-size: 1.2rem; font-family: 'Arial', sans-serif;" id="notificationModalLabel">{{ notificationMessage }}</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<style>
+  /* Estilo para el modal de alerta */
+.modal-header {
+  font-weight: bold;
+  text-align: center;
+}
+
+.modal-body {
+  text-align: center;
+}
+
+.modal-footer button {
+  width: 100%;
+}
+
+/* Colores para los íconos */
+.fas.fa-check-circle {
+  color: rgb(29, 255, 149);
+}
+
+.fas.fa-times-circle {
+  color: rgb(255, 80, 80);
+}
+
+</style>
+  
+
+  <footer class="footer mt-auto py-5">
+    <div class="container">
+      <div class="row">
+        <!-- Información de la empresa -->
+        <div class="col-md-4 footer-section">
+          <h5 class="footer-title">Petshop</h5>
+          <p class="footer-text">© 2024 Petshop. Todos los derechos reservados.</p>
+          <p class="footer-text">Dirección: Av. Teniente Hugo Ortiz y Juan Ante (Quito, Ecuador)</p>
+          <p class="footer-text">Teléfono: 0979395533 / 02-3060877</p>
+          <p class="footer-text">Correo: <a href="mailto:dkq.taco&#64;yavirac.edu.ec" class="footer-link">dkq.taco&#64;yavirac.edu.ec</a></p>
+  
+        </div>
+  
+        <!-- Enlaces útiles -->
+        <div class="col-md-4 footer-section">
+          <h5 class="footer-title">Enlaces útiles</h5>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">Inicio</a></li>
+            <li><a href="#" class="footer-link">Sobre nosotros</a></li>
+            <li><a href="#" class="footer-link">Categorías</a></li>
+            <li><a href="#" class="footer-link">Productos</a></li>
+            <li><a href="#" class="footer-link">Contáctanos</a></li>
+          </ul>
+        </div>
+  
+        <!-- Suscripción al boletín -->
+        <div class="col-md-4 footer-section">
+          <h5 class="footer-title">Suscríbete a nuestro boletín</h5>
+          <form class="newsletter-form">
+            <div class="mb-3">
+              <input type="email" class="form-control" placeholder="Tu correo electrónico" />
+            </div>
+            <button type="submit" class="btn btn-primary">Suscribirse</button>
+          </form>
+        </div>
+      </div>
+  
+      <hr class="footer-divider my-4" />
+  
+      <div class="row">
+        <!-- Redes sociales -->
+        <div class="col-md-6 text-center text-md-start">
+          <h5 class="footer-title">Síguenos en</h5>
+          <ul class="social-icons">
+            <li><a href="#" class="footer-icon"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="#" class="footer-icon"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#" class="footer-icon"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="#" class="footer-icon"><i class="fab fa-youtube"></i></a></li>
+            <li><a href="#" class="footer-icon"><i class="fab fa-linkedin"></i></a></li>
+          </ul>
+        </div>
+  
+        <!-- Información adicional -->
+        <div class="col-md-6 text-center text-md-end">
+          <p class="footer-text">Desarrollado por el equipo de Petshop</p>
+          <p class="footer-text"><a href="#" class="footer-link">Política de privacidad</a> | <a href="#" class="footer-link">Términos y condiciones</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  
+  
+  <style>
+   .footer {
+  background: linear-gradient(45deg, #283593, #395dff); /* Gradiente azul oscuro */
+  color: #fff;
+  padding: 40px 20px;
+  margin-bottom: -100px;
+  border-top: 4px solid #00eeff;
+  
+  .footer-section {
+    margin-bottom: 20px;
+  
+    .footer-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+  
+    .footer-text {
+    
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+  
+    .footer-link {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+  
+      &:hover {
+        color: #00e5ff;
+      }
+    }
+  }
+  
+  .footer-links {
+    list-style: none;
+    padding: 0;
+  
+    li {
+      margin-bottom: 10px;
+  
+      .footer-link {
+        font-size: 1rem;
+        font-weight: 500;
+  
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  
+  .newsletter-form {
+    .form-control {
+      background: #2c387e;
+      color: #fff;
+      border: 1px solid #6a7bff;
+      border-radius: 5px;
+      padding: 10px;
+      transition: all 0.3s ease;
+  
+      &::placeholder {
+        color: #b3c4ff;
+      }
+  
+      &:focus {
+        background: #3949ab;
+        outline: none;
+        box-shadow: 0 0 10px rgba(58, 91, 255, 0.8);
+      }
+    }
+  
+    .btn {
+      background: #00e5ff;
+      color: #283593;
+      font-weight: bold;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+  
+      &:hover {
+        background: #00c4e5;
+        box-shadow: 0 4px 10px rgba(0, 229, 255, 0.6);
+      }
+    }
+  }
+  
+  .footer-divider {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .social-icons {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  
+    li {
+      .footer-icon {
+        font-size: 1.5rem;
+        color: #fff;
+        transition: transform 0.3s ease, color 0.3s ease;
+  
+        &:hover {
+          transform: scale(1.2);
+          color: #00e5ff;
+        }
+      }
+    }
+  }
+  }
+  
+  
+  </style>

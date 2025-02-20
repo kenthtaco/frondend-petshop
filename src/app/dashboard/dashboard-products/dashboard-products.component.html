@@ -1,0 +1,384 @@
+<nav class="navbar navbar-expand-lg navbar-dark py-3">
+  <!-- Botón para el sidebar -->
+  <button class="btn sidebar-navbar-btn" (click)="toggleSidebar()">
+    <i class="bi bi-list"></i>
+  </button>
+
+  <div class="container-fluid">
+    <!-- Logo o marca -->
+    <a class="navbar-brand">
+      <span>P</span>ETSHOP INVENTARIO
+    </a>
+
+    <!-- Barra de búsqueda -->
+    <form class="d-flex search-bar">
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Buscar..."
+        aria-label="Buscar"
+      />
+      <button class="btn btn-search" type="submit">
+        <i class="bi bi-search"></i>
+      </button>
+    </form>
+
+    <!-- Botones adicionales -->
+    <!-- Botones adicionales -->
+<div class="navbar-actions">
+  <button class="btn btn-notifications">
+    <i class="bi bi-bell"></i>
+  </button>
+  <button class="btn btn-profile">
+    <i class="bi bi-person-circle"></i>
+  </button>
+</div>
+
+  </div>
+</nav>
+
+<style>
+  .navbar {
+  background-color: rgb(31, 36, 68);
+  border-bottom: 1px solid #15ff00; /* Color del borde inferior */
+  padding: 1rem; /* Reducir padding para evitar desplazamiento */
+  position: relative; /* Asegura que el z-index funcione */
+  z-index: 1;
+  width: 100%; /* Asegura que ocupe el 100% del ancho */
+  margin: 0;
+  margin-right: -100px;
+  
+    .navbar-brand {
+      margin-left: auto; /* Centra el texto en su posición */
+      font-weight: bolder;
+      letter-spacing: 1px;
+      color: #ffffff;
+  
+      span {
+        color: #00ff9d; /* Color verde para la letra inicial */
+      }
+    }
+  
+    .sidebar-navbar-btn {
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 1.5rem;
+      margin-right: 15px;
+      transition: all 0.3s ease;
+  
+      &:hover {
+        color: #00ff9d; /* Efecto hover en el botón del sidebar */
+        transform: scale(1.1);
+      }
+  
+      i {
+        vertical-align: middle; /* Alinea el ícono correctamente */
+      }
+    }
+  }
+
+  .container-fluid {
+  display: flex; /* Asegura que los elementos internos se comporten como un flexbox */
+  justify-content: center; /* Centra horizontalmente la marca dentro del contenedor */
+  align-items: center; /* Alinea verticalmente los elementos */
+  padding: 1rem; /* Agrega espacio interno */
+  width: 100%; /* Asegura que ocupe todo el ancho disponible */
+  /* Elimina espacios no deseados alrededor */
+
+  .navbar-brand {
+    font-weight: bolder;
+    letter-spacing: 1px;
+    color: #ffffff;
+    text-align: center; /* Centra el texto si hay múltiples líneas */
+    font-size: 1.5rem; /* Ajusta el tamaño del texto */
+    margin-right: 100px;/* Elimina márgenes innecesarios */
+
+    span {
+      color: #00ff9d; /* Color verde para la letra inicial */
+    }
+  }
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+   
+  
+
+    input {
+      padding: 0.5rem 1rem;
+      border: 2px solid transparent;
+      border-radius: 5px;
+      font-size: 1rem;
+      outline: none;
+      background-color: #23263a;
+      color: #ffffff;
+
+      &::placeholder {
+        color: #b3b3b3;
+      }
+
+      &:focus {
+        border-color: #15ff00;
+      }
+    }
+
+    .btn-search {
+      background-color: #15ff00;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin-left: -10px;
+      border-radius: 5px;
+      color: #ffffff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #00cc80;
+      }
+
+      i {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .navbar-actions {
+  display: flex;
+  gap: 1.5rem; /* Espacio entre los botones */
+  margin-right: 2.5rem;
+  margin-left: 2rem;
+  .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent; /* Sin fondo */
+    border: none; /* Sin borde */
+    color: #ffffff; /* Color inicial de los iconos */
+    padding: 0.8rem; /* Espaciado alrededor del icono */
+    border-radius: 50%; /* Botones circulares */
+    font-size: 1.5rem; /* Tamaño de los iconos */
+    cursor: pointer;
+    transition: color 0.3s ease; /* Solo cambia el color del icono */
+
+    i {
+      font-size: 1.5rem; /* Tamaño de los iconos */
+    }
+
+    &:hover {
+      color: #15ff00; /* El icono se pone verde en hover */
+    }
+  }
+}
+
+
+
+
+  @media (max-width: 768px) {
+    .navbar {
+      .navbar-brand {
+        margin-left: 0; /* Elimina márgenes en pantallas pequeñas */
+        text-align: center;
+        font-size: 1rem; /* Reduce el tamaño del texto */
+      }
+  
+      .sidebar-navbar-btn {
+        font-size: 1.2rem; /* Reduce el tamaño del botón */
+        margin-right: 10px;
+      }
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .navbar {
+      padding: 0.5rem 1rem;
+  
+      .navbar-brand {
+        font-size: 0.9rem; /* Ajusta el tamaño del texto en móviles */
+      }
+  
+      .sidebar-navbar-btn {
+        font-size: 1rem;
+      }
+    }
+  }
+  
+</style>
+
+
+<div class="dashboard container-fluid">
+  <div id="productForm" class="row justify-content-center">
+    <!-- Columna izquierda para el formulario -->
+    <div class="form-container col-12 col-lg-6 mb-4">
+      <div class="form-header">
+        <!-- Título y Logo -->
+        <img
+          src="https://cielodemascotas.com/wp-content/uploads/2022/03/cropped-logo-cielo-de-mascotas-01-1.png"
+          alt="Logo"
+          class="form-logo"
+        />
+        <h5 class="form-title">Gestión de Productos</h5>
+      </div>
+
+      <!-- Formulario para crear y editar productos -->
+      <form (ngSubmit)="saveProduct()">
+        <div class="row">
+          <!-- El campo productCode ya no se incluye en el formulario -->
+          <div class="col-md-6">
+            <label for="name" class="form-label" style="color: #00ff62;">Nombre producto</label>
+            <input
+              type="text"
+              id="name"
+              [(ngModel)]="newProduct.name"
+              name="name"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="description" class="form-label" style="color: #00ff62;">Descripción</label>
+            <textarea
+              id="description"
+              [(ngModel)]="newProduct.description"
+              name="description"
+              class="form-control"
+              required
+            ></textarea>
+          </div>
+          <div class="col-md-6">
+            <label for="price" class="form-label" style="color: #00ff62;">Precio</label>
+            <input
+              type="number"
+              id="price"
+              [(ngModel)]="newProduct.price"
+              name="price"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="stockQuantity" class="form-label" style="color: #00ff62;">Cantidad disponibles</label>
+            <input
+              type="number"
+              id="stockQuantity"
+              [(ngModel)]="newProduct.stockQuantity"
+              name="stockQuantity"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="categoryId" class="form-label" style="color: #00ff62;">Categoría ID</label>
+            <input
+              type="number"
+              id="categoryId"
+              [(ngModel)]="newProduct.categoryId"
+              name="categoryId"
+              class="form-control"
+              required
+              style="color: #00ff62;"
+            />
+          </div>
+
+          <!-- Campo para cargar la imagen -->
+          <div class="col-md-6">
+            <label for="image" class="form-label" style="color: #00ff62;">Imagen del producto</label>
+            <input
+              type="file"
+              id="image"
+              (change)="onImageSelect($event)"
+              class="form-control"
+              accept="image/*"
+            />
+            <!-- Previsualización de la imagen cargada -->
+            <div *ngIf="newProduct.imageUrl">
+              <img [src]="newProduct.imageUrl" alt="Imagen del producto" class="img-thumbnail mt-2" style="width: 100px;" />
+            </div>
+          </div>
+
+          <div class="col-12 d-flex justify-content-between">
+            <button type="submit" class="btn btn-success me-2">
+              {{ editingProductId ? 'Actualizar' : 'Guardar' }}
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="resetForm()"
+            >
+              Limpiar
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Modal de confirmación -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="confirmationModalLabel">Actualización del Sistema</h5>
+          </div>
+          <div class="modal-body">
+            <p>{{ modalMessage }}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   <!-- Contenedor principal de la tabla -->
+<div class="table-container col-12 col-lg-10">
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover align-middle custom-table">
+
+      <thead class="table-dark">
+        <tr>
+          <th>Código Producto</th>
+          <th>ID</th>
+          <th>Nombre producto</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th>Cantidad disponibles</th>
+          <th>Categoría ID</th>
+          <th>Imagen</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.productCode }}</td>
+          <td>{{ product.id }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.price | currency:'USD':'symbol':'1.2-2' }}</td>
+          <td>{{ product.stockQuantity }}</td>
+          <td>{{ product.categoryId }}</td>
+          <td class="text-center">
+            <img
+              [src]="'data:image/jpeg;base64,' + product.image"
+              alt="Imagen del producto"
+              class="img-fluid img-thumbnail"
+              style="max-width: 80px; height: auto;"
+            />
+          </td>
+          <td class="text-center">
+            <div class="d-flex justify-content-center gap-2">
+              <button class="btn btn-sm btn-primary" (click)="editProduct(product)">
+                ✏️ Editar
+              </button>
+              <button class="btn btn-sm btn-danger" (click)="openDeleteModal(product.id)">
+                🗑 Borrar
+              </button>
+            </div>
+          </td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

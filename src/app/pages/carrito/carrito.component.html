@@ -1,0 +1,626 @@
+<div class="cart-container">
+  <div class="container py-5">
+    <h2 class="text-center mb-4">🛒 Carrito de Compras</h2>
+    <div class="row">
+      <div class="col-12">
+        <!-- Tabla de productos en el carrito -->
+        <div *ngIf="cartItems.length > 0">
+          <table class="table table-hover table-bordered bg-white rounded shadow">
+            <thead class="bg-primary text-white">
+              <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Total</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of cartItems">
+                <td>
+                  <div class="d-flex align-items-center">
+                    <img
+                      *ngIf="item.product.imageUrl || item.product.image"
+                      [src]="item.product.imageUrl ? item.product.imageUrl : 'data:image/jpeg;base64,' + item.product.image"
+                      alt="Imagen Producto"
+                      class="rounded-circle me-3"
+                      style="width: 50px; height: 50px; object-fit: cover;"
+                    />
+                    <span class="product-name">{{ item.product.name }}</span>
+                  </div>
+                </td>
+                <td>{{ item.product.price | currency: 'USD' : 'symbol' : '1.2-2' }}</td>
+                <td>
+                  <input
+                    type="number"
+                    class="form-control form-control-sm text-center"
+                    [(ngModel)]="item.quantity"
+                    (change)="calculateTotalPrice()"
+                    min="1"
+                  />
+                </td>
+                <td>{{ item.product.price * item.quantity | currency: 'USD' : 'symbol' : '1.2-2' }}</td>
+                <td>
+                  <button class="btn btn-danger btn-sm" (click)="removeFromCart(item.product.id)">
+                    🗑️ Eliminar
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mensaje cuando el carrito está vacío -->
+        <div *ngIf="cartItems.length === 0" class="text-center empty-cart">
+          <img
+            src="https://cdni.iconscout.com/illustration/premium/thumb/carrito-de-compras-vacio-6771628-5639809.png?f=webp"
+            alt="Carrito vacío"
+            class="img-fluid"
+            style="max-width: 200px;"
+          />
+          <p class="mt-3">Tu carrito está vacío. ¡Añade productos para continuar!</p>
+          <a routerLink="/products/:id" class="btn btn-primary">Volver a productos</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resumen del carrito -->
+    <div class="row mt-4">
+      <div class="col-md-4 offset-md-8">
+        <div class="card shadow border-0">
+          <div class="card-body">
+            <h5 class="card-title text-center">Resumen del pedido</h5>
+            <p class="card-text text-center">
+              <strong>Total:</strong>
+              {{ totalPrice | currency: 'USD' : 'symbol' : '1.2-2' }}
+            </p>
+            <button
+              class="btn btn-success btn-block w-100"
+              [disabled]="cartItems.length === 0"
+              (click)="openCustomerModal()"
+            >
+              Proceder al pago 💳
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Modal: Formulario de Datos del Cliente -->
+<div class="modal fade" id="customerModal" tabindex="-1" aria-labelledby="customerModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" style="max-width: 800px;">
+    <div class="modal-content">
+      <div class="modal-header border-0 text-center" style="background-color: #7fa8ff; color: white;">
+        <img src="https://cielodemascotas.com/wp-content/uploads/2022/03/cropped-logo-cielo-de-mascotas-01-1.png" alt="Logo" class="modal-logo mb-3" style="width: 60px; height: auto; position: absolute; left: 20px;">
+        <h5 class="modal-title" id="customerModalLabel" style="text-align: center; display: inline-block; font-weight: bold; font-size: 20px;">
+          <i class="bi bi-person-fill me-2"></i>Información del Cliente
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onNext()" #customerForm="ngForm">
+          <div class="row">
+            <!-- Nombre -->
+            <div class="col-md-4 mb-3">
+              <label for="firstName" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="firstName" [(ngModel)]="customerData.firstName" name="firstName" required #firstName="ngModel">
+              <div *ngIf="firstName.invalid && firstName.touched" class="text-danger">Este campo es obligatorio</div>
+            </div>
+
+            <!-- Apellido -->
+            <div class="col-md-4 mb-3">
+              <label for="lastName" class="form-label">Apellido</label>
+              <input type="text" class="form-control" id="lastName" [(ngModel)]="customerData.lastName" name="lastName" required #lastName="ngModel">
+              <div *ngIf="lastName.invalid && lastName.touched" class="text-danger">Este campo es obligatorio</div>
+            </div>
+
+            <!-- Dirección -->
+            <div class="col-md-4 mb-3">
+              <label for="address" class="form-label">Dirección</label>
+              <input type="text" class="form-control" id="address" [(ngModel)]="customerData.address" name="address" required #address="ngModel">
+              <div *ngIf="address.invalid && address.touched" class="text-danger">Este campo es obligatorio</div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <!-- Ciudad -->
+            <div class="col-md-4 mb-3">
+              <label for="city" class="form-label">Ciudad</label>
+              <input type="text" class="form-control" id="city" [(ngModel)]="customerData.city" name="city" required #city="ngModel">
+              <div *ngIf="city.invalid && city.touched" class="text-danger">Este campo es obligatorio</div>
+            </div>
+
+            <!-- Correo Electrónico -->
+            <div class="col-md-4 mb-3">
+              <label for="email" class="form-label">Correo Electrónico</label>
+              <input type="email" class="form-control" id="email" [(ngModel)]="customerData.email" name="email" required email #email="ngModel">
+              <div *ngIf="email.invalid && email.touched" class="text-danger">Por favor ingrese un correo electrónico válido</div>
+            </div>
+
+            <!-- Teléfono -->
+            <div class="col-md-4 mb-3">
+              <label for="phone" class="form-label">Teléfono</label>
+              <input type="text" class="form-control" id="phone" [(ngModel)]="customerData.phone" name="phone" required #phone="ngModel">
+              <div *ngIf="phone.invalid && phone.touched" class="text-danger">Este campo es obligatorio</div>
+            </div>
+          </div>
+
+          <!-- Botón de Submit -->
+          <div class="text-center mt-3">
+            <button type="submit" class="btn btn-success w-50 py-2 rounded-3 shadow-sm" style="background-color: rgb(42, 81, 255);" [disabled]="customerForm.invalid">Siguiente</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="text-center">
+          <!-- Ícono de Check más grande -->
+          <i *ngIf="isSuccess" class="fa fa-check-circle text-success" style="font-size: 4rem;"></i>
+          <!-- Ícono de Error más grande -->
+          <i *ngIf="!isSuccess" class="fa fa-times-circle text-danger" style="font-size: 4rem;"></i>
+        </div>
+        <!-- Título con tamaño reducido y negrita -->
+        <h5 class="modal-title mt-3 fw-bold" style="font-size: 1.2rem; font-family: 'Arial', sans-serif;" id="notificationModalLabel">{{ notificationMessage }}</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<style>
+ /* Estilo general para el modal */
+.modal-content {
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  background-color: #ffffff; /* Fondo blanco */
+}
+
+.modal-header {
+  background-color: #4CAF50; /* Verde más suave */
+  color: white;
+  border-radius: 12px 12px 0 0; /* Bordes superiores redondeados */
+  font-size: 1.3rem;
+  font-weight: 600;
+  position: relative; /* Para mover el logo */
+  text-align: center;
+}
+
+.modal-logo {
+  margin-bottom: 20px;
+  position: absolute; /* Para mover el logo a la izquierda */
+  left: 20px; /* Ajusta esta posición para mover más a la izquierda si es necesario */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.modal-title {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+
+.modal-body {
+  font-size: 1rem;
+  color: #333;
+  font-family: 'Arial', sans-serif; /* Tipo de letra limpio */
+}
+
+.modal-body .form-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.form-control {
+  border-radius: 8px; /* Bordes redondeados */
+  font-size: 1rem;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #4CAF50; /* Color de borde cuando el campo está enfocado */
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+button.btn-success {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+button.btn-success:hover {
+  background-color: #45a049; /* Sombra más oscura para el hover */
+}
+
+button.btn-success:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.7);
+}
+
+/* Estilo de las columnas */
+.row .col-md-4 {
+  margin-bottom: 20px; /* Separación entre columnas */
+}
+
+/* Estilo del botón */
+button.w-50 {
+  margin-top: 20px;
+  padding: 12px 0;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* Asegura que los inputs y botones no se desborden en pantallas pequeñas */
+@media (max-width: 767px) {
+  .row .col-md-4 {
+    max-width: 100%;
+  }
+}
+
+</style>
+
+
+<!-- Modal: Resumen de Pago -->
+<div class="modal fade" id="summaryModal" tabindex="-1" aria-labelledby="summaryModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content custom-modal-content">
+      <div class="modal-header custom-modal-header">
+        <!-- Título y Botón de Cerrar (X) alineado a la derecha -->
+        <h5 class="modal-title custom-modal-title" id="summaryModalLabel" style="font-weight: bolder; margin-bottom: -5px;">
+          <i class="bi bi-file-earmark-check me-2"></i>
+          <span class="custom-green2">R</span><span class="text-white">esumen de Pago</span>
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: #00FF00; font-size: 1.5rem; border: none; background: none;">
+          <i class="bi bi-x-circle"></i> <!-- Icono X -->
+        </button>
+      </div>
+      <div class="modal-body custom-modal-body">
+        <!-- Información del Cliente -->
+        <div class="customer-info">
+      
+              <p><strong class="custom-green">Cliente:</strong> <span class="text-white customer-info-text">{{ customerData.firstName }} {{ customerData.lastName }}</span></p>
+              <p><strong class="custom-green">Correo Electrónico:</strong> <span class="text-white customer-info-text">{{ customerData.email }}</span></p>
+            
+              <p><strong class="custom-green">Teléfono:</strong> <span class="text-white customer-info-text">{{ customerData.phone }}</span></p>
+
+                <p><strong class="custom-green">Dirección:</strong> <span class="text-white customer-info-text">{{ customerData.address }}</span></p>
+              </div>
+              
+      
+
+        <!-- Productos -->
+        <h5 class="mt-4 custom-section-title">Productos:</h5>
+        <table class="table table-bordered table-dark">
+          <thead>
+            <tr>
+              <th class="custom-green">Producto</th>
+              <th class="custom-green">Cantidad</th>
+              <th class="custom-green">Precio</th>
+              <th class="custom-green">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of cartItems">
+              <td class="text-white">{{ item.product.name }}</td>
+              <td class="text-white">{{ item.quantity }}</td>
+              <td class="text-white">{{ item.product.price | currency: 'USD' : 'symbol' : '1.2-2' }}</td>
+              <td class="text-white">{{ item.product.price * item.quantity | currency: 'USD' : 'symbol' : '1.2-2' }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+<!-- Total -->
+<div class="d-flex align-items-center mt-2">
+  <h5 class="custom-green mb-0" style="font-weight: bold; font-size: 1.25rem;">Total:</h5>
+  <span class="text-white mb-0 ms-2" style="font-size: 1.25rem;">{{ totalPrice | currency: 'USD' : 'symbol' : '1.2-2' }}</span>
+</div>
+
+
+
+        <!-- Método de Pago -->
+        <div class="mt-4">
+          <p><strong class="custom-green">Método de Pago:</strong> <span class="text-white">Contraentrega</span></p>
+        </div>
+
+     <!-- Botón Confirmar -->
+<div class="mt-4 text-center">
+  <button class="btn custom-confirm-btn" (click)="confirmPayment()">Confirmar Pago</button>
+</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<style>
+/* Estilos generales para el modal */
+.custom-modal-content {
+  border-radius: 12px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  background-color: rgb(42, 45, 65); /* Color de fondo oscuro */
+  font-family: 'Roboto', sans-serif;
+  /* Reducción del padding */
+  max-width: 70vw; /* Modal ajustado a un 70% del ancho de la pantalla */
+  width: auto;
+}
+
+/* Color verde propio */
+.custom-green {
+  color: #15ff8a; /* Ajusta el color verde que desees */
+  margin-right: 5px; /* Espacio entre el título y el valor */
+}
+
+
+/* Ajuste para separar las letras */
+.custom-green2 {
+  color: #15ff8a; /* Color verde personalizado */
+  letter-spacing: 2px; /* Ajusta el espaciado entre las letras */
+}
+
+.text-white {
+  color: white;
+  letter-spacing: 1px; /* Ajuste moderado para las letras blancas */
+}
+
+
+/* Espaciado entre el texto del cliente y el título */
+.customer-info-text {
+  margin-left: 5px; /* Ajusta el espacio entre el texto del cliente y su título */
+}
+
+/* Cabecera del Modal */
+.custom-modal-header {
+  background-color: #22263f; /* Azul oscuro */
+  color: white;
+  border-radius: 12px 12px 0 0;
+  padding: 25px;
+  font-size: 1.5rem; /* Título más pequeño */
+  font-weight: 700;
+  text-align: center; /* Centrar texto */
+}
+
+.custom-modal-header i {
+  font-size: 1.6rem; /* Icono ajustado */
+}
+
+.custom-modal-title {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  font-size: 1.6rem; /* Ajuste del tamaño del título */
+  color: #00ff15; /* Título en verde neón */
+}
+
+/* Cuerpo del Modal */
+.custom-modal-body {
+  font-size: 1rem; /* Tamaño de fuente moderado */
+  color: #333;
+  padding: 25px 20px;
+}
+
+/* Estilos para la información del cliente */
+.customer-info h6 {
+  font-weight: 600;
+  color: #00ff15; /* Títulos de información en verde neón */
+  font-size: 1.1rem; /* Ajuste moderado del tamaño del texto */
+  margin-bottom: 8px;
+}
+
+.customer-info p {
+  font-size: 1rem; /* Tamaño de fuente de párrafo reducido */
+  color: #ffffff; /* Datos en blanco */
+  margin-bottom: 10px;
+}
+
+.custom-section-title {
+  font-size: 1.2rem; /* Reducido para mayor legibilidad */
+  font-weight: 600;
+  color: #62ffb6; /* Verde suave para subtítulos */
+  margin-top: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #6fff62; /* Línea debajo de las secciones */
+  padding-bottom: 5px;
+}
+
+/* Tabla de productos */
+.product-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.product-item {
+  padding: 10px 0; /* Menos espacio entre productos */
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  color: #ffffff;
+}
+
+.product-name {
+  font-weight: 600;
+  color: #00ff0d; /* Nombre del producto en verde neón */
+}
+
+.product-quantity,
+.product-price,
+.product-total {
+  color: #28a745; /* Verde para resaltar las cantidades y precios */
+}
+
+.product-item {
+  display: flex;
+  justify-content: space-between; /* Distribuye el espacio entre los elementos */
+  align-items: center; /* Alinea verticalmente los elementos */
+  margin-bottom: 10px; /* Espacio entre los elementos */
+}
+
+.product-name {
+  flex: 3; /* Asigna más espacio al nombre del producto */
+  text-align: left; /* Alinea el nombre a la izquierda */
+  margin-right: 20px; /* Espacio entre el nombre y los números */
+}
+
+.product-quantity, .product-price, .product-total {
+  flex: 1; /* Cada columna (cantidad, precio y total) toma el mismo espacio */
+  text-align: right; /* Alinea los números a la derecha */
+  margin-left: 20px; /* Espacio entre las columnas */
+}
+
+.product-quantity {
+  margin-left: 0; /* Elimina el margen a la izquierda para la cantidad */
+}
+
+.product-price {
+  margin-left: 20px; /* Asegura espacio entre cantidad y precio */
+}
+
+.product-total {
+  margin-left: 20px; /* Asegura espacio entre precio y total */
+}
+
+.product-equal {
+  flex: 0.5;
+  font-weight: bold;
+  margin-left: 100px; /* Aumenta el espacio entre el precio y el símbolo "=" */
+}
+
+/* Divider */
+.custom-divider {
+  margin: 25px 0;
+  border-top: 2px solid #ddd;
+}
+
+.custom-total {
+  font-size: 1.3rem; /* Tamaño de fuente ajustado */
+  font-weight: 700;
+  color: #28a745; /* Verde para el total */
+  margin-top: 20px;
+}
+
+/* Estilos para los botones */
+.custom-form-check {
+  font-size: 1rem; /* Ajuste del tamaño de los botones */
+  margin-bottom: 15px;
+}
+
+.custom-form-check-input {
+  margin-top: 3px;
+}
+
+.custom-form-check-label {
+  font-weight: 500;
+}
+
+.custom-secondary-btn {
+  border-color: #28a745;
+  color: #28a745;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.custom-secondary-btn:hover {
+  background-color: #28a745;
+  color: white;
+}
+
+.custom-confirm-btn {
+  background-color: #007bff;
+  border-color: #007bff;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.custom-confirm-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos personalizados para el botón */
+.custom-confirm-btn {
+  background-color: #00ff73; /* Color verde personalizado */
+  border: none; /* Sin borde */
+  color: white; /* Texto blanco */
+  font-size: 1.1rem; /* Tamaño de la fuente */
+  font-weight: bold; /* Fuente en negrita */
+  padding: 10px 20px; /* Espaciado interno */
+  border-radius: 30px; /* Bordes redondeados */
+  box-shadow: 0px 4px 10px rgba(0, 255, 0, 0.4); /* Sombra sutil */
+  transition: all 0.3s ease-in-out; /* Transición suave */
+}
+
+.custom-confirm-btn:hover {
+  background-color: #28a745; /* Cambio de color cuando el botón es hover */
+  box-shadow: 0px 6px 15px rgba(0, 255, 0, 0.6); /* Sombra más fuerte en hover */
+}
+
+.custom-confirm-btn:active {
+  background-color: #218838; /* Color aún más oscuro cuando se hace click */
+  box-shadow: 0px 4px 5px rgba(0, 255, 0, 0.6); /* Sombra más suave cuando está presionado */
+}
+
+
+/* Responsividad para dispositivos más pequeños */
+@media (max-width: 767px) {
+  .custom-modal-content {
+    padding: 20px;
+    max-width: 90vw;
+  }
+
+  .custom-modal-header {
+    font-size: 1.4rem;
+  }
+
+  .custom-modal-body {
+    padding: 20px;
+  }
+
+  .product-list {
+    padding-left: 15px;
+  }
+
+  .product-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .custom-section-title {
+    font-size: 1.1rem;
+  }
+
+  .custom-total {
+    font-size: 1.2rem;
+  }
+}
+
+
+
+
+
+</style>
+
+
+<!-- Botón flotante para volver a productos -->
+<button
+  *ngIf="cartItems.length > 0"
+  class="btn btn-primary floating-button"
+  routerLink="/products/:id"
+>
+  <i class="fas fa-shopping-basket"></i>
+</button>

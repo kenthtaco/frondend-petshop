@@ -1,0 +1,133 @@
+
+  
+  <!-- Botón para abrir el sidebar -->
+
+
+  
+  
+  <!-- Sidebar y contenido principal -->
+<div class="row">
+  <div class="col-12 d-flex">
+    <!-- Sidebar: controlado por isClosed -->
+    <div class="sidebar" [ngClass]="{ 'closed': isClosed }">
+      <div class="sidebar-header d-flex justify-content-between align-items-center px-3 py-2">
+        <h3 class="mb-0 title">DASHBOARD</h3>
+        <button class="btn btn-light sidebar-toggle-btn" (click)="toggleSidebar()">
+          <i class="bi bi-arrow-left-circle"></i> 
+        </button>
+      </div>
+      
+      <nav class="nav flex-column mt-3">
+        <a class="nav-link text-light px-3 py-2" routerLink="/dashboard/main" routerLinkActive="active">
+          <i class="bi bi-house-door-fill"></i> Main
+        </a>
+        <a class="nav-link text-light px-3 py-2" routerLink="/dashboard/category" routerLinkActive="active">
+          <i class="bi bi-tags-fill"></i> Categorías
+        </a>
+        <a class="nav-link text-light px-3 py-2" routerLink="/dashboard/products" routerLinkActive="active">
+          <i class="bi bi-basket-fill"></i> Productos
+        </a>
+        <a class="nav-link text-light px-3 py-2" routerLink="/dashboard/order" routerLinkActive="active">
+          <i class="bi bi-card-checklist"></i> Pedidos
+        </a>
+      </nav>
+    
+      <a class="nav-link text-light px-3 py-2 logout-btn"  routerLinkActive="active" (click)="openLogoutModal()">
+        <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+      </a>
+    </div>
+
+<!-- Modal de Confirmación para Cerrar Sesión -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" style="max-width: 400px;">
+    <div class="modal-content">
+      <div class="modal-header border-0 d-flex justify-content-center align-items-center">
+        <h5 class="modal-title" id="logoutModalLabel">
+          <i class="bi bi-box-arrow-right me-2"></i>Confirmar Cierre de Sesión
+          <button type="button" class="btn-close btn-close-white ms-4" data-bs-dismiss="modal" aria-label="Close"></button>
+        </h5>
+       
+      </div>
+      
+      <div class="modal-body text-center">
+        <p class="fs-5 text-dark mb-4">¿Estás seguro de que deseas cerrar sesión?</p>
+        <img src="https://img.icons8.com/ios/452/logout-rounded-left.png" alt="Logout Icon" width="80">
+      </div>
+      <div class="modal-footer border-0 justify-content-center">
+        <button type="button" class="btn btn-light text-dark me-3" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" (click)="logout()">Cerrar Sesión</button>
+      </div>
+    </div>
+  </div>
+</div>
+ <style>
+  /* Estilo general para el modal */
+.modal-content {
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  background-color: #f9f9f9; /* Fondo gris suave */
+}
+
+.modal-header {
+  background-color: #ff4d4d; /* Color de fondo rojo */
+  color: white;
+  border-radius: 12px 12px 0 0; /* Bordes superiores redondeados */
+}
+
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.modal-body {
+  font-size: 1.1rem;
+  color: #333; /* Color oscuro para el texto */
+}
+
+.modal-footer {
+  border-top: 1px solid #ddd; /* Línea sutil entre el contenido y el pie */
+}
+
+.modal-footer button {
+  width: 150px;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+
+.modal-footer .btn-light {
+  background-color: #f0f0f0;
+  border-color: #ccc;
+}
+
+.modal-footer .btn-danger {
+  background-color: #ff4d4d;
+  border-color: #ff4d4d;
+  color: white;
+}
+
+.modal-footer .btn-light:hover {
+  background-color: #e6e6e6;
+}
+
+.modal-footer .btn-danger:hover {
+  background-color: #e63946;
+}
+
+.modal-body img {
+  margin-top: 15px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.modal-body img:hover {
+  opacity: 1; /* Aumenta la visibilidad de la imagen cuando se pasa el ratón */
+}
+
+ </style>
+    
+    <!-- Contenido principal: se ajusta según si el sidebar está cerrado -->
+    <div class="content-container" [class.sidebar-closed]="isClosed">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

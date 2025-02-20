@@ -1,0 +1,49 @@
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgb(255, 255, 255); // Fondo semitransparente
+  position: fixed; // Asegura que se mantenga en la pantalla
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999; // Asegura que esté por encima de otros elementos
+  opacity: 1; // Inicialmente visible
+  transition: opacity 0.5s ease-in-out; // Transición suave de opacidad
+}
+
+.spinner-container.hidden {
+  opacity: 0; // Desvanecemos el spinner al añadir esta clase
+}
+
+.spinner {
+  border: 6px solid rgba(255, 255, 255, 0.2); // Fondo más suave para el borde
+  border-top: 6px solid #3498db; // Color del spinner
+  border-radius: 50%;
+  width: 70px; // Aumenté el tamaño para que se vea mejor
+  height: 70px;
+  animation: spin 1.5s ease-in-out infinite, scaleUp 1.5s ease-in-out infinite; // Animación de giro + escala
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.5); // Sombra para darle profundidad
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: rotate(0deg) scale(0.9);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}

@@ -1,0 +1,49 @@
+<div class="comentarios-container mt-5">
+    <h3 class="text-center mb-4">Comentarios sobre el producto</h3>
+    
+    <!-- Formulario para agregar comentarios -->
+    <div class="comentario-form">
+      <h5>Deja tu comentario:</h5>
+      <form (ngSubmit)="onSubmit()" #comentarioForm="ngForm">
+        <div class="form-group">
+          <label for="nombre">Nombre:</label>
+          <input
+            type="text"
+            id="nombre"
+            class="form-control"
+            name="nombre"
+            [(ngModel)]="nuevoComentario.nombre"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="comentario">Comentario:</label>
+          <textarea
+            id="comentario"
+            class="form-control"
+            name="comentario"
+            [(ngModel)]="nuevoComentario.comentario"
+            rows="4"
+            required
+          ></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!comentarioForm.form.valid">Enviar Comentario</button>
+      </form>
+    </div>
+  
+    <!-- Sección para mostrar los comentarios -->
+    <div class="comentarios-list mt-5">
+      <h4>Comentarios recientes:</h4>
+      <div class="comentario-item" *ngFor="let comentario of comentarios; let i = index">
+        <div class="comentario-card">
+          <div class="comentario-header">
+            <strong>{{ comentario.nombre }}</strong>
+          </div>
+          <div class="comentario-body">
+            <p>{{ comentario.comentario }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

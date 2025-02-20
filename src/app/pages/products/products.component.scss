@@ -1,0 +1,167 @@
+.background-container {
+  background-image: url('https://i.pinimg.com/originals/25/2c/7c/252c7c2432de5681751346f8af5d375c.png');
+  background-size: cover;
+  background-position: center;
+  height: 600vh; 
+  margin-top: 0; /* Sin margen negativo */
+  overflow-y: auto;
+  overflow: hidden;
+  margin-top: -200px;
+ 
+
+  .container {
+    padding-top: 300px;
+    
+     /* Ajusta el padding superior según tus necesidades */
+  }
+
+  /* Estilo para el título de la categoría */
+.category-title {
+  text-align: center;
+  font-size: 1.5rem; /* Tamaño de fuente reducido */
+  font-weight: bold;
+  color: #2c3e50; /* Color oscuro para el texto */
+  background-color: #2ce7e7; /* Fondo color dorado */
+  padding: 10px 20px; /* Espaciado alrededor del título */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  margin-bottom: 20px; /* Espaciado entre el título y los productos */
+  transition: all 0.3s ease; /* Animación suave para hover */
+}
+
+.category-title:hover {
+  background-color: #0ff166; /* Fondo más brillante al hacer hover */
+/* Efecto de levantamiento al hacer hover */
+}
+
+/* Estilo general de los productos y tarjetas */
+.card {
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+
+  .product-image {
+    width: 100%;            /* La imagen ocupa todo el ancho del contenedor */
+    height: 200px;          /* Altura fija para uniformar */
+    object-fit: contain;    /* Asegura que toda la imagen sea visible */
+    border-radius: 5px;     /* Bordes redondeados para una apariencia más agradable */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+  
+
+  .card {
+    border: none; 
+    background-color: rgb(255, 255, 255); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  }
+
+  .card-title {
+    font-size: 1.2rem; /* Tamaño de fuente del título de la tarjeta */
+    font-weight: bold; /* Fuente en negrita para el título */
+    margin-bottom: 0.5rem; /* Margen inferior del título */
+  }
+
+  .card-text {
+    color: #2c76ff; /* Color del texto de la tarjeta */
+  }
+
+  .btn {
+    margin-top: auto; /* Alinear el botón al fondo de la tarjeta */
+  }
+
+  button {
+    margin-top: 1rem;
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  
+  .btn-primary {
+    background: linear-gradient(135deg, #4869ff, #399fff);
+    color: #ffffff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+
+  .modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente */
+    backdrop-filter: blur(5px); /* Efecto de desenfoque */
+    position: fixed;
+    top: 100;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Inicialmente oculto */
+    pointer-events: none; /* Desactiva interacción */
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .modal.show {
+    opacity: 1; /* Visible */
+    pointer-events: auto; /* Activa interacción */
+  }
+  
+  .modal-content {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 90%;
+  }
+  
+  h3 {
+    margin-bottom: 1rem;
+    color: #5558ff;
+    font-size: 1.5rem;
+  }
+  
+  p {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    color: #666666;
+  }
+  
+  .btn-close {
+    margin-top: 1.5rem;
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 0.9rem;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .btn-close:hover {
+    color: #555;
+  }
+  
+  button {
+    margin-top: 1rem;
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  
+  .btn-primary {
+    background: linear-gradient(135deg, #4869ff, #399fff);
+    color: #ffffff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  
+}

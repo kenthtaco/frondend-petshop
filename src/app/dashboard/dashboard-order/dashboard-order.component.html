@@ -1,0 +1,324 @@
+<nav class="navbar navbar-expand-lg navbar-dark py-3">
+  <!-- Botón para el sidebar -->
+  <button class="btn sidebar-navbar-btn" (click)="toggleSidebar()">
+    <i class="bi bi-list"></i>
+  </button>
+
+  <div class="container-fluid">
+    <!-- Logo o marca -->
+    <a class="navbar-brand">
+      <span>P</span>ETSHOP INVENTARIO
+    </a>
+
+    <!-- Barra de búsqueda -->
+    <form class="d-flex search-bar">
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Buscar..."
+        aria-label="Buscar"
+      />
+      <button class="btn btn-search" type="submit">
+        <i class="bi bi-search"></i>
+      </button>
+    </form>
+
+    <!-- Botones adicionales -->
+    <!-- Botones adicionales -->
+<div class="navbar-actions">
+  <button class="btn btn-notifications">
+    <i class="bi bi-bell"></i>
+  </button>
+  <button class="btn btn-profile">
+    <i class="bi bi-person-circle"></i>
+  </button>
+</div>
+
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    background-color: rgb(31, 36, 68);
+    border-bottom: 1px solid #15ff00; /* Color del borde inferior */
+    padding: 1rem; /* Reducir padding para evitar desplazamiento */
+    position: relative; /* Asegura que el z-index funcione */
+    z-index: 1;
+    width: 100%; /* Asegura que ocupe el 100% del ancho */
+    margin: 0;
+    margin-right: -100px;
+    
+    .navbar-brand {
+      margin-left: auto; /* Centra el texto en su posición */
+      font-weight: bolder;
+      letter-spacing: 1px;
+      color: #ffffff;
+  
+      span {
+        color: #00ff9d; /* Color verde para la letra inicial */
+      }
+    }
+  
+    .sidebar-navbar-btn {
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 1.5rem;
+      margin-right: 15px;
+      transition: all 0.3s ease;
+  
+      &:hover {
+        color: #00ff9d; /* Efecto hover en el botón del sidebar */
+        transform: scale(1.1);
+      }
+  
+      i {
+        vertical-align: middle; /* Alinea el ícono correctamente */
+      }
+    }
+  }
+
+  .container-fluid {
+    display: flex; /* Asegura que los elementos internos se comporten como un flexbox */
+    justify-content: center; /* Centra horizontalmente la marca dentro del contenedor */
+    align-items: center; /* Alinea verticalmente los elementos */
+    padding: 1rem; /* Agrega espacio interno */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+
+    .navbar-brand {
+      font-weight: bolder;
+      letter-spacing: 1px;
+      color: #ffffff;
+      text-align: center; /* Centra el texto si hay múltiples líneas */
+      font-size: 1.5rem; /* Ajusta el tamaño del texto */
+      margin-right: 100px;
+
+      span {
+        color: #00ff9d; /* Color verde para la letra inicial */
+      }
+    }
+  }
+
+  .search-bar {
+    display: flex;
+    align-items: center;
+
+    input {
+      padding: 0.5rem 1rem;
+      border: 2px solid transparent;
+      border-radius: 5px;
+      font-size: 1rem;
+      outline: none;
+      background-color: #23263a;
+      color: #ffffff;
+
+      &::placeholder {
+        color: #b3b3b3;
+      }
+
+      &:focus {
+        border-color: #15ff00;
+      }
+    }
+
+    .btn-search {
+      background-color: #15ff00;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin-left: -10px;
+      border-radius: 5px;
+      color: #ffffff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #00cc80;
+      }
+
+      i {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .navbar-actions {
+    display: flex;
+    gap: 1.5rem; /* Espacio entre los botones */
+    margin-right: 2.5rem;
+    margin-left: 2rem;
+    .btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent; /* Sin fondo */
+      border: none; /* Sin borde */
+      color: #ffffff; /* Color inicial de los iconos */
+      padding: 0.8rem; /* Espaciado alrededor del icono */
+      border-radius: 50%; /* Botones circulares */
+      font-size: 1.5rem; /* Tamaño de los iconos */
+      cursor: pointer;
+      transition: color 0.3s ease; /* Solo cambia el color del icono */
+
+      i {
+        font-size: 1.5rem; /* Tamaño de los iconos */
+      }
+
+      &:hover {
+        color: #15ff00; /* El icono se pone verde en hover */
+      }
+    }
+  }
+
+  /* Media query para pantallas pequeñas (móviles) */
+  @media (max-width: 768px) {
+    .navbar {
+      padding: 0.5rem 1rem;
+
+      .navbar-brand {
+        font-size: 1.2rem;
+        text-align: center; /* Centra el logo en pantallas pequeñas */
+        margin-left: 0; /* Elimina el margen izquierdo */
+      }
+
+      .sidebar-navbar-btn {
+        font-size: 1.2rem; /* Reduce el tamaño del botón */
+        margin-right: 10px;
+      }
+
+      .navbar-actions {
+        gap: 1rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+      }
+    }
+  }
+
+  /* Media query para pantallas muy pequeñas (móviles) */
+  @media (max-width: 576px) {
+    .navbar {
+      padding: 0.5rem 1rem;
+
+      .navbar-brand {
+        font-size: 0.9rem; /* Ajusta el tamaño del texto en móviles */
+      }
+
+      .sidebar-navbar-btn {
+        font-size: 1rem;
+      }
+
+      .navbar-actions {
+        gap: 0.8rem;
+      }
+    }
+  }
+
+  /* Media query para laptops */
+  @media (max-width: 1024px) {
+    .navbar {
+      padding: 0.75rem 1rem; /* Ajuste de padding para laptops */
+
+      .navbar-brand {
+        font-size: 1.2rem; /* Reduce el tamaño del texto en laptops */
+        margin-right: 50px; /* Ajuste de margen en laptops */
+      }
+
+      .navbar-actions {
+        gap: 1rem; /* Reduce el espacio entre los botones */
+        margin-right: 1.5rem;
+        margin-left: 1.5rem;
+      }
+    }
+  }
+
+  /* Media query para pantallas grandes */
+  @media (min-width: 1200px) {
+    .navbar {
+      padding: 1.2rem 2rem; /* Padding más grande en pantallas grandes */
+    }
+
+    .navbar-brand {
+      font-size: 1.8rem; /* Aumenta el tamaño del texto en pantallas grandes */
+    }
+
+    .navbar-actions {
+      gap: 2rem;
+    }
+  }
+</style>
+
+
+
+
+<div class="dashboard">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="table-container">
+        <h4 class="section-title" style="font-weight: bolder;">Pedidos Generales</h4>
+
+        <!-- Iteración de pedidos -->
+        <div *ngFor="let order of orders" class="order-card">
+          <div class="order-header">
+            <h5 class="order-id">Pedido ID: {{ order.id }}</h5>
+            <p class="order-date">
+              <strong>Fecha:</strong> {{ order.orderDate | date:'fullDate' }}
+            </p>
+          </div>
+
+          <div class="order-body">
+            <p>
+              <strong>Cliente:</strong> 
+              <span class="customer-name" style="margin-left: 10px;">{{ order.customerName }} {{ order.customerLastName }}</span>
+            </p>
+            <p>
+              <strong>Teléfono:</strong> 
+              <span class="customer-phone" style="margin-left: 10px;">{{ order.customerPhone }}</span>
+            </p>
+            <p>
+              <strong>Dirección:</strong> 
+              <span class="customer-address" style="margin-left: 10px;">{{ order.customerAddress }}</span>
+            </p>
+            <p>
+              <strong>Total a pagar:</strong> 
+              <span class="order-total" style="margin-left: 10px;">{{ order.totalAmount | currency }}</span>
+            </p>
+          </div>
+
+          <!-- Detalles del pedido -->
+          <div class="order-details">
+            <h6>Detalles del Pedido</h6>
+            <div *ngFor="let detail of order.orderDetails" class="detail-item">
+              <p>
+                <strong>Producto:</strong> 
+                <span class="product-name" style="margin-left: 10px;">{{ detail.productName }}</span>
+              </p>
+              <p>
+                <strong>Código:</strong> 
+                <span class="product-code" style="margin-left: 10px;">{{ detail.productCode || 'No disponible' }}</span>
+              </p>
+              <p>
+                <strong>Cantidad:</strong> 
+                <span class="product-quantity" style="margin-left: 10px;"> {{ detail.quantity }}</span>
+              </p>
+              <p>
+                <strong>Precio:</strong> 
+                <span class="product-price" style="margin-left: 10px;">{{ detail.price | currency }}</span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Acciones -->
+          <div class="order-actions">
+            <button class="btn btn-danger" (click)="deleteOrder(order.id)">
+              Eliminar Pedido
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

@@ -1,0 +1,254 @@
+<nav class="navbar navbar-expand-lg navbar-dark py-3">
+  <!-- Botón para el sidebar -->
+  <button class="btn sidebar-navbar-btn" (click)="toggleSidebar()">
+    <i class="bi bi-list"></i>
+  </button>
+
+  <div class="container-fluid">
+    <!-- Logo o marca -->
+    <a class="navbar-brand">
+      <span>P</span>ETSHOP INVENTARIO
+    </a>
+
+    <!-- Barra de búsqueda -->
+    <form class="d-flex search-bar">
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Buscar..."
+        aria-label="Buscar"
+      />
+      <button class="btn btn-search" type="submit">
+        <i class="bi bi-search"></i>
+      </button>
+    </form>
+
+    <!-- Botones adicionales -->
+    <!-- Botones adicionales -->
+<div class="navbar-actions">
+  <button class="btn btn-notifications">
+    <i class="bi bi-bell"></i>
+  </button>
+  <button class="btn btn-profile">
+    <i class="bi bi-person-circle"></i>
+  </button>
+</div>
+
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    background-color: rgb(31, 36, 68);
+    border-bottom: 1px solid #15ff00;
+    padding: 1rem;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    margin: 0;
+    margin-right: -100px;
+  }
+
+  .navbar .navbar-brand {
+    margin-left: auto;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    color: #ffffff;
+  }
+
+  .navbar .navbar-brand span {
+    color: #00ff9d;
+  }
+
+  .navbar .sidebar-navbar-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin-right: 15px;
+    transition: all 0.3s ease;
+  }
+
+  .navbar .sidebar-navbar-btn:hover {
+    color: #00ff9d;
+    transform: scale(1.1);
+  }
+
+  .navbar .sidebar-navbar-btn i {
+    vertical-align: middle;
+  }
+
+  .container-fluid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .container-fluid .navbar-brand {
+    font-weight: bolder;
+    letter-spacing: 1px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-right: 100px;
+  }
+
+  .container-fluid .navbar-brand span {
+    color: #00ff9d;
+  }
+
+  .search-bar {
+    display: flex;
+    align-items: center;
+  }
+
+  .search-bar input {
+    padding: 0.5rem 1rem;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    background-color: #23263a;
+    color: #ffffff;
+  }
+
+  .search-bar input::placeholder {
+    color: #b3b3b3;
+  }
+
+  .search-bar input:focus {
+    border-color: #15ff00;
+  }
+
+  .search-bar .btn-search {
+    background-color: #15ff00;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-left: -10px;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .search-bar .btn-search:hover {
+    background-color: #00cc80;
+  }
+
+  .search-bar .btn-search i {
+    font-size: 1.2rem;
+  }
+
+  .navbar-actions {
+    display: flex;
+    gap: 1.5rem;
+    margin-right: 2.5rem;
+    margin-left: 2rem;
+  }
+
+  .navbar-actions .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    padding: 0.8rem;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  .navbar-actions .btn i {
+    font-size: 1.5rem;
+  }
+
+  .navbar-actions .btn:hover {
+    color: #15ff00;
+  }
+
+  @media (max-width: 1200px) {
+    .navbar {
+      padding: 0.8rem;
+    }
+    .navbar .navbar-brand {
+      font-size: 1.3rem;
+      margin-right: 50px;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 0.7rem;
+    }
+    .navbar .navbar-brand {
+      font-size: 1.2rem;
+      margin-right: 30px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .navbar {
+      .navbar-brand {
+        margin-left: 0;
+        text-align: center;
+        font-size: 1rem;
+      }
+      .sidebar-navbar-btn {
+        font-size: 1.2rem;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .navbar {
+      padding: 0.5rem 1rem;
+    }
+    .navbar .navbar-brand {
+      font-size: 0.9rem;
+    }
+    .navbar .sidebar-navbar-btn {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+
+<div class="container-fluid dashboard py-4">
+  <div class="row cards-row justify-content-center">
+    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-4">
+      <div class="card h-100 shadow-sm card-custom">
+        <div class="card-body text-center" >
+          <img src="https://cdn-icons-png.freepik.com/512/1499/1499547.png" alt="Logo" class="logo mb-3">
+          <h5 class="card-title" style="color: aliceblue;">Total de productos</h5>
+          <p class="card-text display-4 fw-bold text-primary">{{ totalProducts }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-4">
+      <div class="card h-100 shadow-sm card-custom">
+        <div class="card-body text-center">
+          <img src="https://cdn-icons-png.flaticon.com/512/6724/6724239.png " alt="Logo" class="logo mb-3">
+          <h5 class="card-title" style="color: aliceblue;">Total de categorías</h5>
+          <p class="card-text display-4 fw-bold text-success">{{ totalCategories }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-4">
+      <div class="card h-100 shadow-sm card-custom">
+        <div class="card-body text-center">
+          <img src="https://cdn-icons-png.flaticon.com/512/2558/2558162.png" alt="Logo" class="logo mb-3">
+          <h5 class="card-title" style="color: aliceblue;">Total de pedidos</h5>
+          <p class="card-text display-4 fw-bold text-danger">{{ totalOrders }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

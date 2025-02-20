@@ -1,0 +1,67 @@
+
+.login-container {
+  height: 120vh;
+  background-image: url('https://img.lagaceta.com.ar/fotos/notas/2021/03/04/lo-se-debe-saber-antes-elegir-mascota-882865-190506.jpg'); 
+  display: flex;
+  background-size: cover; /* Hace que la imagen cubra todo el contenedor */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; 
+  margin-top: -20px;
+  justify-content: center;
+  align-items: center;
+
+  .login-card {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+
+    h2 {
+      font-size: 1.5rem;
+      color: #0072ff;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    
+    p {
+      color: #00c8ffb4;
+
+    }
+
+    .form-label {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .form-control {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 0.75rem;
+      &:focus {
+        border-color: #0072ff;
+        box-shadow: none;
+      }
+    }
+
+    .btn {
+      background: #0072ff;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 5px;
+      &:hover {
+        background: #0056cc;
+      }
+    }
+  }
+  .logo-img {
+    width: 200px; 
+    height: auto; 
+    display: block; 
+    margin: 0 auto; 
+  }
+
+  
+  
+}

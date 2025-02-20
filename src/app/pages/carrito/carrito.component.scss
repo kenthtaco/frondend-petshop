@@ -1,0 +1,137 @@
+
+
+.cart-container {
+  background-image: url('https://i.pinimg.com/originals/25/2c/7c/252c7c2432de5681751346f8af5d375c.png');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  padding: 2rem 0;
+
+  h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #353ebd;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .table {
+    border-collapse: separate;
+    border-spacing: 0 15px;
+
+    thead {
+      tr {
+        th {
+          font-size: 1rem;
+          text-align: center;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        background: white;
+      
+        border-radius: 8px;
+
+        td {
+          vertical-align: middle;
+          text-align: center;
+        }
+
+        .product-name {
+          font-weight: 600;
+          color: #555;
+        }
+
+        &:hover {
+          background: #f8f9fa;
+        }
+      }
+    }
+  }
+
+  .empty-cart {
+    img {
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #666;
+    }
+
+    .btn {
+      background: #4356ff;
+      border: none;
+      &:hover {
+        background: #4fffad;
+      }
+    }
+  }
+
+  .card {
+    border-radius: 15px;
+
+    .card-body {
+      background: #ffffff;
+      border-radius: 15px;
+
+      .btn {
+        background: #28a745;
+        border: none;
+        &:hover {
+          background: #218838;
+        }
+      }
+    }
+  }
+
+
+  .floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #696cff;
+    color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 1.5rem;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+  
+    /* Cambia de tamaño y color al pasar el mouse */
+    &:hover {
+      background-color: #4bff69;
+      transform: scale(1.1);
+    }
+  
+    /* Tooltip personalizado */
+    &::after {
+      content: "Agregar más productos";
+      position: absolute;
+      left: -150px; /* Ajusta la posición horizontal del texto */
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.2s ease-in-out;
+    }
+  
+    &:hover::after {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+}

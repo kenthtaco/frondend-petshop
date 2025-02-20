@@ -1,0 +1,331 @@
+<nav class="navbar navbar-expand-lg navbar-dark py-3">
+  <!-- Botón para el sidebar -->
+  <button class="btn sidebar-navbar-btn" (click)="toggleSidebar()">
+    <i class="bi bi-list"></i>
+  </button>
+
+  <div class="container-fluid">
+    <!-- Logo o marca -->
+    <a class="navbar-brand">
+      <span>P</span>ETSHOP INVENTARIO
+    </a>
+
+    <!-- Barra de búsqueda -->
+    <form class="d-flex search-bar">
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Buscar..."
+        aria-label="Buscar"
+      />
+      <button class="btn btn-search" type="submit">
+        <i class="bi bi-search"></i>
+      </button>
+    </form>
+
+    <!-- Botones adicionales -->
+    <!-- Botones adicionales -->
+<div class="navbar-actions">
+  <button class="btn btn-notifications">
+    <i class="bi bi-bell"></i>
+  </button>
+  <button class="btn btn-profile">
+    <i class="bi bi-person-circle"></i>
+  </button>
+</div>
+
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    background-color: rgb(31, 36, 68);
+    border-bottom: 1px solid #15ff00;
+    padding: 1rem;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    margin: 0;
+    margin-right: -100px;
+
+    .navbar-brand {
+      margin-left: auto;
+      font-weight: bolder;
+      letter-spacing: 1px;
+      color: #ffffff;
+
+      span {
+        color: #00ff9d;
+      }
+    }
+
+    .sidebar-navbar-btn {
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 1.5rem;
+      margin-right: 15px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: #00ff9d;
+        transform: scale(1.1);
+      }
+
+      i {
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .container-fluid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+
+    .navbar-brand {
+      font-weight: bolder;
+      letter-spacing: 1px;
+      color: #ffffff;
+      text-align: center;
+      font-size: 1.5rem;
+      margin-right: 100px;
+
+      span {
+        color: #00ff9d;
+      }
+    }
+  }
+
+  .search-bar {
+    display: flex;
+    align-items: center;
+
+    input {
+      padding: 0.5rem 1rem;
+      border: 2px solid transparent;
+      border-radius: 5px;
+      font-size: 1rem;
+      outline: none;
+      background-color: #23263a;
+      color: #ffffff;
+
+      &::placeholder {
+        color: #b3b3b3;
+      }
+
+      &:focus {
+        border-color: #15ff00;
+      }
+    }
+
+    .btn-search {
+      background-color: #15ff00;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin-left: -10px;
+      border-radius: 5px;
+      color: #ffffff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #00cc80;
+      }
+
+      i {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .navbar-actions {
+    display: flex;
+    gap: 1.5rem;
+    margin-right: 2.5rem;
+    margin-left: 2rem;
+
+    .btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+      border: none;
+      color: #ffffff;
+      padding: 0.8rem;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
+
+      i {
+        font-size: 1.5rem;
+      }
+
+      &:hover {
+        color: #15ff00;
+      }
+    }
+  }
+
+  /* Ajustes para laptops y dispositivos medianos */
+  @media (max-width: 1200px) {
+    .navbar {
+      .navbar-brand {
+        font-size: 1.2rem; /* Ajuste del tamaño del texto */
+      }
+
+      .sidebar-navbar-btn {
+        font-size: 1.3rem; /* Ajuste del tamaño del botón */
+        margin-right: 10px;
+      }
+    }
+
+    .search-bar input {
+      font-size: 0.9rem;
+    }
+
+    .navbar-actions .btn {
+      font-size: 1.3rem;
+    }
+  }
+
+  /* Ajustes para tablets y pantallas pequeñas */
+  @media (max-width: 768px) {
+    .navbar {
+      .navbar-brand {
+        margin-left: 0;
+        text-align: center;
+        font-size: 1rem;
+      }
+
+      .sidebar-navbar-btn {
+        font-size: 1.2rem;
+        margin-right: 10px;
+      }
+    }
+
+    .search-bar input {
+      font-size: 1rem;
+    }
+
+    .navbar-actions .btn {
+      font-size: 1.4rem;
+    }
+  }
+
+  /* Ajustes para móviles */
+  @media (max-width: 576px) {
+    .navbar {
+      padding: 0.5rem 1rem;
+
+      .navbar-brand {
+        font-size: 0.9rem;
+      }
+
+      .sidebar-navbar-btn {
+        font-size: 1rem;
+      }
+    }
+
+    .search-bar input {
+      font-size: 0.9rem;
+    }
+
+    .navbar-actions .btn {
+      font-size: 1.2rem;
+    }
+  }
+</style>
+
+
+
+<div class="dashboard container-fluid">
+  <div class="row">
+    <!-- Columna izquierda: Formulario -->
+    <div class="form-container col-md-5">
+      <form (ngSubmit)="createCategory()" class="form shadow p-4 rounded">
+        <div class="form-header">
+          <img
+            src="https://cielodemascotas.com/wp-content/uploads/2022/03/cropped-logo-cielo-de-mascotas-01-1.png"
+            alt="Logo"
+            class="form-logo mb-3"
+          />
+          <h2 class="form-title text-center">Administrar Categorías</h2>
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label" style="color: #00ff73;">Nombre de la categoría</label>
+          <input
+            type="text"
+            id="name"
+            [(ngModel)]="newCategory.name"
+            name="name"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label" style="color: #00ff73;">Descripción de la categoría</label>
+          <textarea
+            id="description"
+            [(ngModel)]="newCategory.description"
+            name="description"
+            class="form-control"
+            required
+          ></textarea>
+        </div>
+        <div class="d-flex justify-content-between">
+          <button (click)="editCategory()" class="btn btn-success">Guardar</button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="resetForm()"
+          >
+            Limpiar
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Columna derecha: Tabla -->
+    <div class="table-container col-md-7">
+      <table class="table table-hover shadow-sm rounded">
+        <thead class="thead-dark">
+          <tr>
+            <th style="background-color: #343957; color: #00ffc8;">ID</th>
+            <th style="background-color: #343957; color: #00ffc8;">Nombre de la categoría</th>
+            <th style="background-color: #343957; color: #00ffc8;">Descripción de la categoría</th>
+            <th style="background-color: #343957; color: #00ffc8;">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let category of categories">
+            <td>{{ category.id }}</td>
+            <td>{{ category.name }}</td>
+            <td>{{ category.description }}</td>
+            <td>
+              <button
+                class="btn btn-sm btn-primary me-2"
+                (click)="setEditingCategory(category)"
+              >
+                Editar
+              </button>
+              <button
+                class="btn btn-sm btn-danger"
+                (click)="deleteCategory(category.id)"
+              >
+                Borrar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
